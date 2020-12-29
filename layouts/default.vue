@@ -11,27 +11,29 @@
           >UNOFFICIAL Portland, OR</span
         >
       </div>
-      <div class="flex-grow flex justify-end items-center h-20 text-2xl">
+      <div
+        class="pt-2 flex-grow flex flex-col md:flex-row justify-center md:justify-end items-end md:items-center h-24 text-2xl"
+      >
         <a
           href="https://twitter.com/pdxbotc"
-          class="px-4 text-white hover:text-red-600 hover:underline transition duration-50 font-piratesbay"
+          class="py-1 px-4 text-white hover:text-red-600 hover:underline transition duration-50 font-piratesbay"
         >
           <font-awesome-icon :icon="['fab', 'twitter']" />
-          <span class="pl-2">Twitter</span>
+          <span class="hidden sm:inline pl-2">Twitter</span>
         </a>
         <a
           href="https://www.facebook.com/groups/BOTCPDX"
-          class="px-4 text-white hover:text-red-600 hover:underline transition duration-50 font-piratesbay"
+          class="py-1 px-4 text-white hover:text-red-600 hover:underline transition duration-50 font-piratesbay"
         >
           <font-awesome-icon :icon="['fab', 'facebook']" />
-          <span class="pl-2">Facebook</span>
+          <span class="hidden sm:inline pl-2">Facebook</span>
         </a>
         <a
           href="https://discord.gg/HMVv8rgFTY"
-          class="px-4 text-white hover:text-red-600 hover:underline transition duration-50 font-piratesbay"
+          class="py-1 px-4 text-white hover:text-red-600 hover:underline transition duration-50 font-piratesbay"
         >
           <font-awesome-icon :icon="['fab', 'discord']" />
-          <span class="pl-2">Discord</span>
+          <span class="hidden sm:inline pl-2">Discord</span>
         </a>
       </div>
     </div>

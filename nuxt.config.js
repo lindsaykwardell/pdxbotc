@@ -30,6 +30,7 @@ export default {
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/fontawesome',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -43,4 +44,9 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
+  fontawesome: {
+    icons: {
+      brands: ['faFacebook', 'faTwitter', 'faDiscord'],
+    },
+  },
 }

@@ -1,28 +1,27 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">pdxbotc</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+  <main class="flex flex-col items-center py-5 text-gray-300 container m-auto">
+    <img
+      src="~/assets/img/demon-head.png"
+      class="demon-head py-5"
+      alt="Demon Head"
+    />
+    <h1 class="text-4xl font-piratesbay text-center">
+      Welcome to the unoffical Portland, OR, Blood on the Clocktower group!
+    </h1>
+    <p class="py-8 w-3/5 m-auto">
+      This group is for players of Blood On The Clocktower based in Portland,
+      Oregon.
+      <a
+        class="underline text-red-300 hover:text-red-400"
+        href="https://bloodontheclocktower.com/"
+        >Blood on the Clocktower</a
+      >
+      is a social deduction game enjoyed by 5 to 20 players on opposing teams of
+      good and evil. Think of it as Werewolf on steroids, where each player has
+      a unique ability, and death is not the end as you continue to participate
+      in the game even as a ghost.
+    </p>
+  </main>
 </template>
 
 <script lang="ts">
@@ -31,40 +30,11 @@ import Vue from 'vue'
 export default Vue.extend({})
 </script>
 
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
+<style lang="postcss" scoped>
+/* .demon-head {
+  background: url('../assets/img/flag-25.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+} */
 </style>

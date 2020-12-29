@@ -22,8 +22,11 @@
     }
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@nuxt/content": "^1.9.0",
     "@nuxt/typescript-runtime": "^2.0.0",
+    "@nuxtjs/fontawesome": "^1.1.2",
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6"
   },

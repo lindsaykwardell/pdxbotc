@@ -1,10 +1,12 @@
 <template>
   <main class="flex flex-col items-center py-5 text-gray-300 container m-auto">
-    <img
-      src="~/assets/img/demon-head.png"
-      class="demon-head py-5"
-      alt="Demon Head"
-    />
+    <div class="demon-head-wrapper">
+      <img
+        src="~/assets/img/demon-head.png"
+        class="demon-head py-5"
+        alt="Demon Head"
+      />
+    </div>
     <h1 class="text-4xl font-piratesbay text-center">
       Welcome to the unoffical Portland, OR, Blood on the Clocktower group!
     </h1>
@@ -31,10 +33,8 @@ export default Vue.extend({})
 </script>
 
 <style lang="postcss" scoped>
-/* .demon-head {
-  background: url('../assets/img/flag-25.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-} */
+.demon-head-wrapper {
+  height: 540px;
+  width: 466px;
+}
 </style>

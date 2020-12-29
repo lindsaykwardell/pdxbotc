@@ -27,7 +27,7 @@
           <span class="pl-2">Facebook</span>
         </a>
         <a
-          href="https://twitter.com/pdxbotc"
+          href="https://discord.gg/HMVv8rgFTY"
           class="px-4 text-white hover:text-red-600 hover:underline transition duration-50 font-piratesbay"
         >
           <font-awesome-icon :icon="['fab', 'discord']" />

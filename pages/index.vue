@@ -11,7 +11,7 @@
     </aside>
     <content class="w-full lg:w-3/5 p-5 bg-gray-800 shadow m-5">
       <h1 class="text-4xl font-piratesbay text-center">
-        Welcome to the unoffical Portland, OR, Blood on the Clocktower group!
+        Welcome to the Unofficial Portland, OR, Blood on the Clocktower group!
       </h1>
       <p class="py-8 m-auto">
         This group is for players of Blood On The Clocktower based in Portland,

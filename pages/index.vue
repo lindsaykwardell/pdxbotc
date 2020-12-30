@@ -49,13 +49,13 @@
       <article
         v-for="post in posts"
         :key="post.slug"
-        class="container bg-gray-800 text-white text-lg p-5"
+        class="container-small bg-gray-800 text-white text-lg p-5"
       >
         <div class="flex items-center pb-4 border-b border-gray-200 mb-4">
           <h3 class="text-3xl text-white font-piratesbay flex-grow">
             {{ post.title }}
           </h3>
-          <div class="text-right">
+          <div class="w-3/5 md:w-1/3 whitespace-nowrap text-right">
             {{ formatDate(post.date) }}<br />
             <span class="text-gray-400">{{ post.author }}</span>
           </div>

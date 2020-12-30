@@ -36,7 +36,7 @@
         <div class="py-4 text-center">
           <a
             href="https://discord.gg/HMVv8rgFTY"
-            class="px-4 py-3 text-2xl bg-gray-900 hover:bg-red-800 transition duration-50 rounded shadow"
+            class="px-4 py-3 text-2xl bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
           >
             <font-awesome-icon :icon="['fab', 'discord']" />
             <span class="pl-2">Join our Discord</span>

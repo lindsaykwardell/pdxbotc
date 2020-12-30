@@ -28,11 +28,11 @@ module.exports = {
       colors: {
         'botc-white': 'rgb(238,238,238)',
       },
-      // colors: {
-      //   lindsay: 'rgb(112,36,89)',
-      // },
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+    // ...
+  ],
 }

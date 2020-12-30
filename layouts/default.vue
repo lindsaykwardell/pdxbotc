@@ -49,7 +49,9 @@
 
 body {
   @apply bg-gray-700;
+}
 
-  /* background-image: url('https://bloodontheclocktower.com/img/website/background-img2.jpg'); */
+.prose * {
+  color: white !important;
 }
 </style>

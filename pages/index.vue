@@ -91,7 +91,7 @@
         </div>
       </article>
     </div>
-    <div class="flex flex-col justify-center items-center pt-8">
+    <div class="flex-col justify-center items-center pt-8 hidden sm:flex">
       <h2 class="text-4xl font-piratesbay text-center text-white">
         What is Blood on the Clocktower?
       </h2>

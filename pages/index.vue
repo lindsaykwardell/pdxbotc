@@ -122,7 +122,7 @@ export default Vue.extend({
       .fetch()
     const upcomingEvents = await $content('events')
       .sortBy('date', 'desc')
-      // .where({ date: { $gte: new Date() } })
+      .where({ date: { $gte: new Date() } })
       .fetch()
 
     return {

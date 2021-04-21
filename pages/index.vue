@@ -28,10 +28,10 @@
           continue to participate in the game even as a ghost.
         </p>
         <p class="py-4 m-auto text-lg">
-          During Covid-19, we typically play on Sundays at 6PM Pacific time on
-          Discord. Players are welcome to gather and start their own games at
-          any time. We are always excited to have new players join us. We hope
-          to see you at our next game!
+          During Covid-19, we are scheduling socially distanced in-person events
+          as well as online events on Discord. Players are welcome to gather and
+          start their own games at any time. We are always excited to have new
+          players join us. We hope to see you at our next game!
         </p>
         <div class="py-4 text-center">
           <a
@@ -49,9 +49,21 @@
       <div class="w-full lg:w-2/5 bg-gray-800 text-white text-lg p-5">
         <ul>
           <li v-for="event in upcomingEvents" :key="event.slug">
-            {{ event.title }}
+            <div class="border-b border-gray-200 mb-4">
+              <h3 class="text-3xl text-white font-piratesbay flex-grow">
+                {{ event.title }}
+              </h3>
+              <h4>{{ formatEventDate(event.date) }}</h4>
+            </div>
+            <img v-if="event.image" :src="event.image" />
+            <nuxt-content
+              :document="event"
+              class="prose prose-lg m-auto text-white"
+            />
           </li>
-          <li v-if="!upcomingEvents.length">No events are scheduled at this time.</li>
+          <li v-if="!upcomingEvents.length">
+            No events are scheduled at this time.
+          </li>
         </ul>
       </div>
     </div>
@@ -79,7 +91,7 @@
         </div>
       </article>
     </div>
-    <div class="flex flex-col justify-center items-center">
+    <div class="flex flex-col justify-center items-center pt-8">
       <h2 class="text-4xl font-piratesbay text-center text-white">
         What is Blood on the Clocktower?
       </h2>
@@ -110,7 +122,7 @@ export default Vue.extend({
       .fetch()
     const upcomingEvents = await $content('events')
       .sortBy('date', 'desc')
-      .where({ date: { $gte: new Date() } })
+      // .where({ date: { $gte: new Date() } })
       .fetch()
 
     return {
@@ -121,6 +133,9 @@ export default Vue.extend({
   methods: {
     formatDate(date) {
       return dayjs(date).format('MM/DD/YYYY')
+    },
+    formatEventDate(date) {
+      return dayjs(date).format('MM/DD/YYYY h:MM a')
     },
   },
 })

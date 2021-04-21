@@ -45,6 +45,17 @@
       </content>
     </div>
     <div class="flex flex-col items-center">
+      <h2 class="text-5xl py-4 text-white font-piratesbay">Upcoming Events:</h2>
+      <div class="w-full lg:w-2/5 bg-gray-800 text-white text-lg p-5">
+        <ul>
+          <li v-for="event in upcomingEvents" :key="event.slug">
+            {{ event.title }}
+          </li>
+          <li v-if="!upcomingEvents.length">No events are scheduled at this time.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex flex-col items-center">
       <h2 class="text-5xl py-4 text-white font-piratesbay">Latest Updates:</h2>
       <article
         v-for="post in posts"
@@ -68,7 +79,7 @@
         </div>
       </article>
     </div>
-    <!-- <div class="flex flex-col justify-center items-center">
+    <div class="flex flex-col justify-center items-center">
       <h2 class="text-4xl font-piratesbay text-center text-white">
         What is Blood on the Clocktower?
       </h2>
@@ -83,7 +94,7 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
       />
-    </div> -->
+    </div>
   </main>
 </template>
 
@@ -97,9 +108,14 @@ export default Vue.extend({
       .sortBy('date', 'desc')
       .limit(3)
       .fetch()
+    const upcomingEvents = await $content('events')
+      .sortBy('date', 'desc')
+      .where({ date: { $gte: new Date() } })
+      .fetch()
 
     return {
       posts,
+      upcomingEvents,
     }
   },
   methods: {

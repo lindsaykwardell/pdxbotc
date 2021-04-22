@@ -14,25 +14,10 @@
         <h1 class="text-4xl font-piratesbay text-center">
           Welcome to the Unofficial Portland, OR, Blood on the Clocktower group!
         </h1>
-        <p class="py-4 m-auto text-lg">
-          This group is for players of Blood On The Clocktower based in
-          Portland, Oregon.
-          <a
-            class="underline text-red-300 hover:text-red-400"
-            href="https://bloodontheclocktower.com/"
-            >Blood on the Clocktower</a
-          >
-          is a social deduction game enjoyed by 5 to 20 players on opposing
-          teams of good and evil. Think of it as Werewolf on steroids, where
-          each player has a unique ability, and death is not the end as you
-          continue to participate in the game even as a ghost.
-        </p>
-        <p class="py-4 m-auto text-lg">
-          During Covid-19, we are scheduling socially distanced in-person events
-          as well as online events on Discord. Players are welcome to gather and
-          start their own games at any time. We are always excited to have new
-          players join us. We hope to see you at our next game!
-        </p>
+        <nuxt-content
+          class="py-4 prose prose-lg max-w-none"
+          :document="welcomeText"
+        />
         <div class="py-4 text-center">
           <a
             href="https://discord.gg/HMVv8rgFTY"
@@ -45,43 +30,23 @@
       </content>
     </div>
     <div class="flex flex-col items-center">
-      <h2 class="text-5xl py-4 text-white font-piratesbay">Upcoming Events:</h2>
+      <div class="py-4 flex flex-col items-center">
+        <h2 class="text-5xl text-white font-piratesbay">Upcoming Events:</h2>
+        <div class="lg:w-3/5 py-4">
+          <nuxt-content
+            class="prose prose-lg max-w-none m-auto"
+            :document="upcomingEventsSubtitle"
+          />
+        </div>
+      </div>
       <div
         class="flex flex-col md:flex-row w-full lg:w-3/5 bg-gray-800 text-white text-lg p-5"
       >
-        <div class="flex-1 p-3 border-r border-gray-200" v-if="nextInPersonEvent">
-          <div class="border-b border-gray-200 mb-4">
-            <h3 class="text-3xl text-white font-piratesbay flex-grow">
-              {{ nextInPersonEvent.title }}
-            </h3>
-            <h4>When: {{ formatEventDate(nextInPersonEvent.date) }}</h4>
-            <h4>Where: {{ nextInPersonEvent.location === 'online' ? 'Discord Channel' : 'Sellwood Park' }}</h4>
-          </div>
-          <img v-if="nextInPersonEvent.image" :src="nextInPersonEvent.image" />
-          <nuxt-content
-            :document="nextInPersonEvent"
-            class="prose prose-lg m-auto text-white pb-4"
-          />
-          <button class="block m-auto px-4 py-3 text-2xl bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow">RSVP Here!</button>
-        </div>
-        <div class="flex-1 p-3" v-if="nextOnlineEvent">
-          <div class="border-b border-gray-200 mb-4">
-            <h3 class="text-3xl text-white font-piratesbay flex-grow">
-              {{ nextOnlineEvent.title }}
-            </h3>
-            <h4>When: {{ formatEventDate(nextOnlineEvent.date) }}</h4>
-            <h4>Where: {{ nextOnlineEvent.location === 'online' ? 'Discord Channel' : 'Sellwood Park' }}</h4>
-          </div>
-          <img v-if="nextOnlineEvent.image" :src="nextOnlineEvent.image" />
-          <nuxt-content
-            :document="nextOnlineEvent"
-            class="prose prose-lg m-auto text-white pb-4"
-          />
-          <button class="block m-auto px-4 py-3 text-2xl bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow">RSVP Here!</button>
-        </div>
+        <Event :event="nextInPersonEvent" class="border-r border-gray-200" />
+        <Event :event="nextOnlineEvent" />
       </div>
     </div>
-    <div class="flex flex-col items-center">
+    <!-- <div class="flex flex-col items-center">
       <h2 class="text-5xl py-4 text-white font-piratesbay">Latest Updates:</h2>
       <article
         v-for="post in posts"
@@ -104,7 +69,7 @@
           />
         </div>
       </article>
-    </div>
+    </div> -->
     <div class="flex-col justify-center items-center pt-8 hidden sm:flex">
       <h2 class="text-4xl font-piratesbay text-center text-white">
         What is Blood on the Clocktower?
@@ -125,46 +90,46 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import dayjs from 'dayjs'
 
-export default Vue.extend({
-  async asyncData({ $content }) {
+export default {
+  async asyncData({ $content, $fetchText }) {
     const posts = await $content('posts')
       .sortBy('date', 'desc')
       .limit(3)
       .fetch()
-    // const upcomingEvents = await $content('events')
-    //   .sortBy('date', 'desc')
-    //   .where({ date: { $gte: new Date() } })
-    //   .fetch()
 
-    const nextInPersonEvent = (await $content('events')
-      .sortBy('date', 'desc')
-      .where({ location: 'sellwood' })
-      .fetch())?.[0]
+    const nextInPersonEvent = (
+      await $content('events')
+        .sortBy('date', 'desc')
+        .where({ location: 'sellwood' })
+        .fetch()
+    )?.[0]
 
-    const nextOnlineEvent = (await $content('events')
-      .sortBy('date', 'desc')
-      .where({ location: 'online' })
-      .fetch())?.[0]
+    const nextOnlineEvent = (
+      await $content('events')
+        .sortBy('date', 'desc')
+        .where({ location: 'online' })
+        .fetch()
+    )?.[0]
+
+    const welcomeText = await $fetchText('welcome')
+    const upcomingEventsSubtitle = await $fetchText('upcoming-events-subtitle')
 
     return {
       posts,
-      // upcomingEvents,
       nextInPersonEvent,
       nextOnlineEvent,
+      welcomeText,
+      upcomingEventsSubtitle,
     }
   },
   methods: {
     formatDate(date) {
       return dayjs(date).format('MM/DD/YYYY')
     },
-    formatEventDate(date) {
-      return dayjs(date).format('MM/DD/YYYY h:MM a')
-    },
   },
-})
+}
 </script>
 
 <style lang="postcss" scoped>

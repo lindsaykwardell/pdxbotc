@@ -33,3 +33,15 @@ collections:
       - { label: 'Location', name: 'location', widget: 'select', options: ['online', 'sellwood'] }
       - { label: 'Image', name: 'image', widget: 'image' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'randomText'
+    label: 'Text Blob'
+    folder: 'content/text'
+    format: 'frontmatter'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}{{second}}-{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Key', name: 'key', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }

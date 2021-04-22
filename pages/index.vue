@@ -46,25 +46,39 @@
     </div>
     <div class="flex flex-col items-center">
       <h2 class="text-5xl py-4 text-white font-piratesbay">Upcoming Events:</h2>
-      <div class="w-full lg:w-2/5 bg-gray-800 text-white text-lg p-5">
-        <ul>
-          <li v-for="event in upcomingEvents" :key="event.slug">
-            <div class="border-b border-gray-200 mb-4">
-              <h3 class="text-3xl text-white font-piratesbay flex-grow">
-                {{ event.title }}
-              </h3>
-              <h4>{{ formatEventDate(event.date) }}</h4>
-            </div>
-            <img v-if="event.image" :src="event.image" />
-            <nuxt-content
-              :document="event"
-              class="prose prose-lg m-auto text-white"
-            />
-          </li>
-          <li v-if="!upcomingEvents.length">
-            No events are scheduled at this time.
-          </li>
-        </ul>
+      <div
+        class="flex flex-col md:flex-row w-full lg:w-3/5 bg-gray-800 text-white text-lg p-5"
+      >
+        <div class="flex-1 p-3 border-r border-gray-200" v-if="nextInPersonEvent">
+          <div class="border-b border-gray-200 mb-4">
+            <h3 class="text-3xl text-white font-piratesbay flex-grow">
+              {{ nextInPersonEvent.title }}
+            </h3>
+            <h4>When: {{ formatEventDate(nextInPersonEvent.date) }}</h4>
+            <h4>Where: {{ nextInPersonEvent.location === 'online' ? 'Discord Channel' : 'Sellwood Park' }}</h4>
+          </div>
+          <img v-if="nextInPersonEvent.image" :src="nextInPersonEvent.image" />
+          <nuxt-content
+            :document="nextInPersonEvent"
+            class="prose prose-lg m-auto text-white pb-4"
+          />
+          <button class="block m-auto px-4 py-3 text-2xl bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow">RSVP Here!</button>
+        </div>
+        <div class="flex-1 p-3" v-if="nextOnlineEvent">
+          <div class="border-b border-gray-200 mb-4">
+            <h3 class="text-3xl text-white font-piratesbay flex-grow">
+              {{ nextOnlineEvent.title }}
+            </h3>
+            <h4>When: {{ formatEventDate(nextOnlineEvent.date) }}</h4>
+            <h4>Where: {{ nextOnlineEvent.location === 'online' ? 'Discord Channel' : 'Sellwood Park' }}</h4>
+          </div>
+          <img v-if="nextOnlineEvent.image" :src="nextOnlineEvent.image" />
+          <nuxt-content
+            :document="nextOnlineEvent"
+            class="prose prose-lg m-auto text-white pb-4"
+          />
+          <button class="block m-auto px-4 py-3 text-2xl bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow">RSVP Here!</button>
+        </div>
       </div>
     </div>
     <div class="flex flex-col items-center">
@@ -120,14 +134,26 @@ export default Vue.extend({
       .sortBy('date', 'desc')
       .limit(3)
       .fetch()
-    const upcomingEvents = await $content('events')
+    // const upcomingEvents = await $content('events')
+    //   .sortBy('date', 'desc')
+    //   .where({ date: { $gte: new Date() } })
+    //   .fetch()
+
+    const nextInPersonEvent = (await $content('events')
       .sortBy('date', 'desc')
-      .where({ date: { $gte: new Date() } })
-      .fetch()
+      .where({ location: 'sellwood' })
+      .fetch())?.[0]
+
+    const nextOnlineEvent = (await $content('events')
+      .sortBy('date', 'desc')
+      .where({ location: 'online' })
+      .fetch())?.[0]
 
     return {
       posts,
-      upcomingEvents,
+      // upcomingEvents,
+      nextInPersonEvent,
+      nextOnlineEvent,
     }
   },
   methods: {

@@ -5,7 +5,7 @@
     >
       <aside class="demon-head-wrapper w-2/5">
         <img
-          src="~/assets/img/demon-head.png"
+          src="/img/demon-head.png"
           class="demon-head py-5"
           alt="Demon Head"
         />

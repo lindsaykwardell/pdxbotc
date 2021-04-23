@@ -18,7 +18,7 @@
           @click="showRsvpForm = !showRsvpForm"
           class="block m-2 px-5 py-2 text-lg bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
         >
-          RSVP
+          {{ showRsvpForm ? 'Event Details' : 'RSVP' }}
         </button>
       </div>
     </div>
@@ -67,7 +67,7 @@
         :disabled="!enableForm"
       />
     </FormulateForm>
-    <div class="py-6 text-center text-3xl font-piratesbay">
+    <div v-if="formStatus === 'SUCCESS' || formStatus === 'ERROR'" class="mt-6 py-6 text-center text-3xl font-piratesbay bg-gray-700">
       <template v-if="formStatus === 'SUCCESS'">Submission received!</template>
       <template v-if="formStatus === 'ERROR'">Something went wrong, try again</template>
     </div>

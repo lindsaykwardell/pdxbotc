@@ -6,7 +6,7 @@
       <aside class="demon-head-wrapper w-2/5">
         <img
           src="/img/demon-head.png"
-          class="demon-head py-5"
+          class="demon-head"
           alt="Demon Head"
         />
       </aside>
@@ -134,7 +134,7 @@ export default {
 
 <style lang="postcss" scoped>
 .demon-head-wrapper {
-  max-height: 540px;
-  max-width: 466px;
+  max-height: 440px;
+  max-width: 366px;
 }
 </style>

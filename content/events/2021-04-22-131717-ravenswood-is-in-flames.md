@@ -4,6 +4,6 @@ date: 2021-04-26T02:00:58.472Z
 location: online
 image: /img/ravenswoodinflames.jpg
 ---
-Clocktower online is scheduled every other Sunday.
+Clocktower online is scheduled every other Sunday on our Discord server.
 
-Please join us in the virtual Town Square for safe online play.
+Join us in the virtual "Town Square" voice channel in the Live Game tab for safe online play.

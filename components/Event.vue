@@ -15,7 +15,7 @@
           </h4>
         </div>
         <button
-          class="block m-2 px-3 py-2 text-xl bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
+          class="block m-2 px-3 py-2 text-lg bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
         >
           RSVP Here!
         </button>
@@ -28,7 +28,7 @@
     />
     <nuxt-content
       :document="event"
-      class="prose prose-lg m-auto text-white pb-4"
+      class="prose m-auto text-white pt-4"
     />
   </div>
 </template>

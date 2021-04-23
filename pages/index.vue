@@ -10,18 +10,18 @@
           alt="Demon Head"
         />
       </aside>
-      <content class="w-full lg:w-3/5 p-5 bg-gray-800 shadow m-5">
-        <h1 class="text-4xl font-piratesbay text-center">
+      <content class="w-11/12 lg:w-3/5 p-5 bg-gray-800 shadow m-5">
+        <h1 class="text-2xl font-piratesbay text-center">
           Welcome to the Unofficial Portland, OR, Blood on the Clocktower group!
         </h1>
         <nuxt-content
-          class="py-4 prose prose-lg max-w-none"
+          class="py-4 prose max-w-none"
           :document="welcomeText"
         />
         <div class="py-4 text-center">
           <a
             href="https://discord.gg/HMVv8rgFTY"
-            class="px-4 py-3 text-2xl bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
+            class="px-4 py-3 text-xl bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
           >
             <font-awesome-icon :icon="['fab', 'discord']" />
             <span class="pl-2">Join our Discord</span>
@@ -31,18 +31,18 @@
     </div>
     <div class="flex flex-col items-center">
       <div class="py-4 flex flex-col items-center">
-        <h2 class="text-5xl text-white font-piratesbay">Upcoming Events:</h2>
-        <div class="lg:w-3/5 py-4">
+        <h2 class="text-3xl text-white font-piratesbay">Upcoming Events:</h2>
+        <div class="w-11/12 md:w-3/5 py-4">
           <nuxt-content
-            class="prose prose-lg max-w-none m-auto"
+            class="prose max-w-none m-auto"
             :document="upcomingEventsSubtitle"
           />
         </div>
       </div>
       <div
-        class="flex flex-col md:flex-row w-full lg:w-3/5 bg-gray-800 text-white text-lg p-5"
+        class="flex flex-col lg:flex-row w-11/12 xl:w-[1100px] lg:w-[950px] md:w-[550px] bg-gray-800 text-white text-lg p-5"
       >
-        <Event :event="nextInPersonEvent" class="border-r border-gray-200" />
+        <Event :event="nextInPersonEvent" class="lg:border-r border-b lg:border-b-0 border-gray-200" />
         <Event :event="nextOnlineEvent" />
       </div>
     </div>
@@ -71,10 +71,10 @@
       </article>
     </div> -->
     <div class="flex-col justify-center items-center pt-8 hidden sm:flex">
-      <h2 class="text-4xl font-piratesbay text-center text-white">
+      <h2 class="text-2xl font-piratesbay text-center text-white">
         What is Blood on the Clocktower?
       </h2>
-      <p class="py-4 text-lg text-white">
+      <p class="py-4 text-white">
         Watch this video to learn more about Blood on the Clocktower:
       </p>
       <iframe

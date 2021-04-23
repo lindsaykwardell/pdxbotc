@@ -15,26 +15,75 @@
           </h4>
         </div>
         <button
-          class="block m-2 px-3 py-2 text-lg bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
+          @click="showRsvpForm = !showRsvpForm"
+          class="block m-2 px-5 py-2 text-lg bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
         >
-          RSVP Here!
+          RSVP
         </button>
       </div>
     </div>
-    <img
-      v-if="event.image"
-      :src="event.image"
-      alt="Next In-Person Event Banner"
-    />
-    <nuxt-content
-      :document="event"
-      class="prose m-auto text-white pt-4"
-    />
+    <template v-if="!showRsvpForm">
+      <img
+        v-if="event.image"
+        :src="event.image"
+        alt="Next In-Person Event Banner"
+      />
+      <nuxt-content :document="event" class="prose m-auto text-white pt-4" />
+    </template>
+    <FormulateForm
+      v-else
+      v-model="formValues"
+      @submit="submitRsvpForm"
+      :disabled="!enableForm"
+      class="w-3/4 m-auto"
+    >
+      <FormulateInput
+        name="name"
+        type="text"
+        label="Your name"
+        placeholder="Your name"
+        validation="required"
+        class="mb-6"
+        label-class="font-piratesbay text-xl pb-2"
+        input-class="w-full bg-gray-900 shadow p-2 disabled:text-gray-500"
+        errors-class="text-sm"
+        :disabled="!enableForm"
+      />
+      <FormulateInput
+        name="email"
+        type="email"
+        label="Email Address"
+        placeholder="your@address.here"
+        class="mb-6"
+        label-class="font-piratesbay text-xl pb-2"
+        input-class="w-full bg-gray-900 shadow p-2 disabled:text-gray-500"
+        errors-class="text-sm"
+        :disabled="!enableForm"
+      />
+      <FormulateInput
+        type="submit"
+        label="Submit Registration"
+        input-class="block m-auto px-5 py-2 text-xl bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow disabled:text-gray-500 disabled:hover:bg-gray-900 disabled:cursor-default"
+        :disabled="!enableForm"
+      />
+    </FormulateForm>
+    <div class="py-6 text-center text-3xl font-piratesbay">
+      <template v-if="formStatus === 'SUCCESS'">Submission received!</template>
+      <template v-if="formStatus === 'ERROR'">Something went wrong, try again</template>
+    </div>
   </div>
 </template>
 
 <script>
 import dayjs from 'dayjs'
+import axios from 'axios'
+
+const Status = {
+  IDLE: 'IDLE',
+  SUBMITTING: 'SUBMITTING',
+  SUCCESS: 'SUCCESS',
+  ERROR: 'ERROR',
+}
 
 export default {
   props: {
@@ -43,9 +92,39 @@ export default {
       default: null,
     },
   },
+  data() {
+    return {
+      showRsvpForm: false,
+      formValues: {},
+      formStatus: Status.IDLE,
+    }
+  },
+  computed: {
+    enableForm() {
+      return this.formStatus === Status.IDLE || this.formStatus === Status.ERROR
+    },
+  },
   methods: {
     formatEventDate(date) {
       return dayjs(date).format('MM/DD/YYYY h:MM a')
+    },
+    submitRsvpForm() {
+      if (!this.enableForm) return
+
+      this.formStatus = Status.SUBMITTING
+
+      axios
+        .post('/.netlify/functions/rsvp', {
+          ...this.formValues,
+          eventName: this.event.title,
+          eventDate: this.formatEventDate(this.event.date),
+        })
+        .then(() => {
+          this.formStatus = Status.SUCCESS
+        })
+        .catch(() => {
+          this.formStatus = Status.ERROR
+        })
     },
   },
 }

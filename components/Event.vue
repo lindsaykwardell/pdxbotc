@@ -9,9 +9,26 @@
           <h4>When: {{ formatEventDate(event.date) }}</h4>
           <h4>
             Where:
-            {{
-              event.location === 'online' ? 'Discord Channel' : 'Sellwood Park'
-            }}
+            <template v-if="event.location === 'online'">
+              <a
+                href="https://discord.gg/HMVv8rgFTY"
+                target="_blank"
+                class="px-4 py-1 bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
+              >
+                <font-awesome-icon :icon="['fab', 'discord']" />
+                <span class="pl-2">Discord</span>
+              </a>
+            </template>
+            <template v-if="event.location === 'sellwood'">
+              <a
+                href="https://www.google.com/maps/place/Sellwood+Park/@45.4674276,-122.6613082,17z/data=!4m5!3m4!1s0x54950addbff55de7:0x4331adb2384907f2!8m2!3d45.467673!4d-122.6603033"
+                target="_blank"
+                class="px-4 py-1 bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
+              >
+                <font-awesome-icon :icon="['fa', 'map-marked-alt']" />
+                <span class="pl-2">Sellwood Park</span>
+              </a>
+            </template>
           </h4>
         </div>
         <button
@@ -67,9 +84,14 @@
         :disabled="!enableForm"
       />
     </FormulateForm>
-    <div v-if="formStatus === 'SUCCESS' || formStatus === 'ERROR'" class="mt-6 py-6 text-center text-3xl font-piratesbay bg-gray-700">
+    <div
+      v-if="formStatus === 'SUCCESS' || formStatus === 'ERROR'"
+      class="mt-6 py-6 text-center text-3xl font-piratesbay bg-gray-700"
+    >
       <template v-if="formStatus === 'SUCCESS'">Submission received!</template>
-      <template v-if="formStatus === 'ERROR'">Something went wrong, try again</template>
+      <template v-if="formStatus === 'ERROR'"
+        >Something went wrong, try again</template
+      >
     </div>
   </div>
 </template>

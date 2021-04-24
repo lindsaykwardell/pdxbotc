@@ -11113,6 +11113,11 @@ vue@^2.6.12:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
   integrity sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==
 
+vuetensils@^0.7.9:
+  version "0.7.9"
+  resolved "https://registry.yarnpkg.com/vuetensils/-/vuetensils-0.7.9.tgz#970d4ee6d1c4a5b645562a70161f4cdee8b3f53b"
+  integrity sha512-9Y05xGO5IvnkIFVCZWdQuNlBcj3ws7vwaVCgV6PSRtSxjQhhvVpqczOgf7kC6H0lY3yQEbSGZHclEwpP5VGzKg==
+
 vuex@^3.6.2:
   version "3.6.2"
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.6.2.tgz#236bc086a870c3ae79946f107f16de59d5895e71"

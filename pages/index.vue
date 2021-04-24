@@ -4,29 +4,13 @@
       class="flex flex-col lg:flex-row items-center py-5 text-gray-300 container m-auto"
     >
       <aside class="demon-head-wrapper w-2/5">
-        <img
-          src="/img/demon-head.png"
-          class="demon-head"
-          alt="Demon Head"
-        />
+        <img src="/img/demon-head.png" class="demon-head" alt="Demon Head" />
       </aside>
       <content class="w-11/12 lg:w-3/5 p-5 bg-gray-800 shadow m-5">
         <h1 class="text-2xl font-piratesbay text-center">
           Welcome to the Unofficial Portland, OR, Blood on the Clocktower group!
         </h1>
-        <nuxt-content
-          class="py-4 prose max-w-none"
-          :document="welcomeText"
-        />
-        <div class="py-4 text-center">
-          <a
-            href="https://discord.gg/HMVv8rgFTY"
-            class="px-4 py-3 text-xl bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
-          >
-            <font-awesome-icon :icon="['fab', 'discord']" />
-            <span class="pl-2">Join our Discord</span>
-          </a>
-        </div>
+        <nuxt-content class="py-4 prose max-w-none" :document="welcomeText" />
       </content>
     </div>
     <div class="flex flex-col items-center">
@@ -42,9 +26,16 @@
       <div
         class="flex flex-col lg:flex-row w-11/12 xl:w-[1100px] lg:w-[950px] md:w-[550px] bg-gray-800 text-white text-lg p-5"
       >
-        <Event :event="nextInPersonEvent" class="lg:border-r border-b lg:border-b-0 border-gray-200" />
+        <Event
+          :event="nextInPersonEvent"
+          class="lg:border-r border-b lg:border-b-0 border-gray-200"
+        />
         <Event :event="nextOnlineEvent" />
       </div>
+    </div>
+    <div class="m-auto w-full md:w-[550px] bg-gray-800 text-white text-lg mt-12 p-5">
+      <h2 class="text-3xl text-white font-piratesbay text-center mb-4">COVID-19 Guidelines:</h2>
+      <nuxt-content class="prose m-auto" :document="covidGuidelines" />
     </div>
     <!-- <div class="flex flex-col items-center">
       <h2 class="text-5xl py-4 text-white font-piratesbay">Latest Updates:</h2>
@@ -115,6 +106,7 @@ export default {
 
     const welcomeText = await $fetchText('welcome')
     const upcomingEventsSubtitle = await $fetchText('upcoming-events-subtitle')
+    const covidGuidelines = await $fetchText('covid-guidelines')
 
     return {
       posts,
@@ -122,6 +114,7 @@ export default {
       nextOnlineEvent,
       welcomeText,
       upcomingEventsSubtitle,
+      covidGuidelines,
     }
   },
   methods: {

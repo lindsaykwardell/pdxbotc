@@ -128,7 +128,7 @@ export default {
   },
   methods: {
     formatEventDate(date) {
-      return dayjs(date).format('MM/DD/YYYY h:MM a')
+      return dayjs(date).format('MM/DD/YYYY h:mm a')
     },
     submitRsvpForm() {
       if (!this.enableForm) return

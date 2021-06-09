@@ -4,7 +4,7 @@
       <h3 class="text-3xl text-white font-piratesbay flex-grow">
         {{ event.title }}
       </h3>
-      <div class="flex">
+      <div class="flex flex-col sm:flex-row">
         <div class="flex-grow">
           <h4>When: {{ formatEventDate(event.date) }}</h4>
           <h4>

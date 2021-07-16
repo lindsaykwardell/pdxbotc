@@ -15,7 +15,7 @@
     </div>
     <div class="flex flex-col items-center">
       <div class="py-4 flex flex-col items-center">
-        <h2 class="text-3xl text-white font-piratesbay">Upcoming Events:</h2>
+        <h2 class="text-2xl md:text-3xl text-white font-piratesbay">Upcoming Events:</h2>
         <div class="w-11/12 md:w-3/5 py-4">
           <nuxt-content
             class="prose max-w-none m-auto"
@@ -33,8 +33,9 @@
         <Event :event="nextOnlineEvent" />
       </div>
     </div>
-    <div class="m-auto w-full md:w-[550px] bg-gray-800 text-white text-lg mt-12 p-5">
-      <h2 class="text-3xl text-white font-piratesbay text-center mb-4">COVID-19 Guidelines:</h2>
+    <ContactUs />
+    <div class="m-auto w-11/12 md:w-[550px] bg-gray-800 text-white text-lg mt-12 p-5">
+      <h2 class="text-2xl md:text-3xl text-white font-piratesbay text-center mb-4">COVID-19 Guidelines:</h2>
       <nuxt-content class="prose m-auto" :document="covidGuidelines" />
     </div>
     <!-- <div class="flex flex-col items-center">

@@ -1,7 +1,7 @@
 <template>
   <div v-if="event" class="flex-1 p-3">
     <div class="border-b border-gray-200 mb-4">
-      <h3 class="text-3xl text-white font-piratesbay flex-grow">
+      <h3 class="text-2xl md:text-3xl text-white font-piratesbay flex-grow">
         {{ event.title }}
       </h3>
       <div class="flex flex-col sm:flex-row">
@@ -86,7 +86,7 @@
     </FormulateForm>
     <div
       v-if="formStatus === 'SUCCESS' || formStatus === 'ERROR'"
-      class="mt-6 py-6 text-center text-3xl font-piratesbay bg-gray-700"
+      class="mt-6 py-6 text-center text-2xl md:text-3xl font-piratesbay bg-gray-700"
     >
       <template v-if="formStatus === 'SUCCESS'">Submission received!</template>
       <template v-if="formStatus === 'ERROR'"

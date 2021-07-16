@@ -16,24 +16,35 @@
       >
         <a
           href="https://twitter.com/pdxbotc"
-          class="py-1 px-4 text-white hover:text-red-600 hover:underline transition duration-50 font-piratesbay"
+          target="_blank"
+          class="py-1 px-4 text-white hover:text-red-600 transition duration-50 font-piratesbay"
         >
           <font-awesome-icon :icon="['fab', 'twitter']" />
-          <span class="hidden sm:inline pl-2">Twitter</span>
+          <span class="hidden sm:inline pl-2 hover:underline">Twitter</span>
         </a>
         <a
           href="https://www.facebook.com/groups/BOTCPDX"
-          class="py-1 px-4 text-white hover:text-red-600 hover:underline transition duration-50 font-piratesbay"
+          target="_blank"
+          class="py-1 px-4 text-white hover:text-red-600 transition duration-50 font-piratesbay"
         >
           <font-awesome-icon :icon="['fab', 'facebook']" />
-          <span class="hidden sm:inline pl-2">Facebook</span>
+          <span class="hidden sm:inline pl-2 hover:underline">Facebook</span>
         </a>
         <a
           href="https://discord.gg/HMVv8rgFTY"
-          class="py-1 px-4 text-white hover:text-red-600 hover:underline transition duration-50 font-piratesbay"
+          target="_blank"
+          class="py-1 px-4 text-white hover:text-red-600 transition duration-50 font-piratesbay"
         >
           <font-awesome-icon :icon="['fab', 'discord']" />
-          <span class="hidden sm:inline pl-2">Discord</span>
+          <span class="hidden sm:inline pl-2 hover:underline">Discord</span>
+        </a>
+        <a
+          href="mailto:pdxbotc@gmail.com"
+          target="_blank"
+          class="hidden sm:inline py-1 px-4 text-white hover:text-red-600 transition duration-50 font-piratesbay"
+        >
+          <font-awesome-icon :icon="['fa', 'envelope']" />
+          <span class="hidden sm:inline pl-2 hover:underline">Email</span>
         </a>
       </div>
     </div>

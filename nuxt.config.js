@@ -48,7 +48,7 @@ export default {
   fontawesome: {
     icons: {
       brands: ['faFacebook', 'faTwitter', 'faDiscord'],
-      solid: ['faMapMarkedAlt'],
+      solid: ['faMapMarkedAlt', 'faEnvelope'],
     },
   },
 }

@@ -28,11 +28,11 @@
       >
         <Event
           :event="nextInPersonEvent"
-          class="xl:border-r border-b xl:border-b-0 border-gray-200"
+          class="xl:border-r border-b xl:border-b-0 border-gray-500"
         />
         <Event
           :event="nextCloudcapEvent"
-          class="xl:border-r border-b xl:border-b-0 border-gray-200"
+          class="xl:border-r border-b xl:border-b-0 border-gray-500"
         />
         <Event :event="nextOnlineEvent" />
       </div>

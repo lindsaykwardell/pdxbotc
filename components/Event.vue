@@ -1,6 +1,6 @@
 <template>
   <div v-if="event" class="flex-1 p-3 w-full">
-    <div class="border-b border-gray-200 mb-4">
+    <div class="border-b border-gray-500 mb-4">
       <h3 class="text-2xl md:text-3xl text-white font-piratesbay flex-grow">
         {{ event.title }}
       </h3>

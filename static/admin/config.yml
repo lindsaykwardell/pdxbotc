@@ -30,7 +30,7 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Date', name: 'date', widget: 'datetime' }
-      - { label: 'Location', name: 'location', widget: 'select', options: ['online', 'sellwood'] }
+      - { label: 'Location', name: 'location', widget: 'select', options: ['online', 'sellwood', 'cloudcap'] }
       - { label: 'Image', name: 'image', widget: 'image' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
   - name: 'randomText'

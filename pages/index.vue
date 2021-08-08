@@ -24,11 +24,15 @@
         </div>
       </div>
       <div
-        class="flex flex-col lg:flex-row w-11/12 xl:w-[1100px] lg:w-[950px] md:w-[550px] bg-gray-800 text-white text-lg p-5"
+        class="flex flex-col xl:flex-row w-11/12 md:w-[500px] lg:w-[750px] xl:w-11/12 bg-gray-800 text-white text-lg p-5"
       >
         <Event
           :event="nextInPersonEvent"
-          class="lg:border-r border-b lg:border-b-0 border-gray-200"
+          class="xl:border-r border-b xl:border-b-0 border-gray-200"
+        />
+        <Event
+          :event="nextCloudcapEvent"
+          class="xl:border-r border-b xl:border-b-0 border-gray-200"
         />
         <Event :event="nextOnlineEvent" />
       </div>
@@ -105,6 +109,13 @@ export default {
         .fetch()
     )?.[0]
 
+    const nextCloudcapEvent = (
+      await $content('events')
+        .sortBy('date', 'desc')
+        .where({ location: 'cloudcap' })
+        .fetch()
+    )?.[0]
+
     const welcomeText = await $fetchText('welcome')
     const upcomingEventsSubtitle = await $fetchText('upcoming-events-subtitle')
     const covidGuidelines = await $fetchText('covid-guidelines')
@@ -113,6 +124,7 @@ export default {
       posts,
       nextInPersonEvent,
       nextOnlineEvent,
+      nextCloudcapEvent,
       welcomeText,
       upcomingEventsSubtitle,
       covidGuidelines,

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="event" class="flex-1 p-3">
+  <div v-if="event" class="flex-1 p-3 w-full">
     <div class="border-b border-gray-200 mb-4">
       <h3 class="text-2xl md:text-3xl text-white font-piratesbay flex-grow">
         {{ event.title }}
@@ -13,17 +13,53 @@
               <a
                 href="https://discord.gg/HMVv8rgFTY"
                 target="_blank"
-                class="px-4 py-1 bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
+                class="
+                  px-4
+                  py-1
+                  bg-gray-900
+                  hover:bg-red-700
+                  transition
+                  duration-50
+                  rounded
+                  shadow
+                "
               >
                 <font-awesome-icon :icon="['fab', 'discord']" />
                 <span class="pl-2">Discord</span>
+              </a>
+            </template>
+            <template v-if="event.location === 'cloudcap'">
+              <a
+                href="https://cloudcapgames.com/"
+                class="
+                  px-4
+                  py-1
+                  bg-gray-900
+                  hover:bg-red-700
+                  transition
+                  duration-50
+                  rounded
+                  shadow
+                "
+              >
+                <font-awesome-icon :icon="['fa', 'map-marked-alt']" />
+                <span class="pl-2">Cloud Cap Games</span>
               </a>
             </template>
             <template v-if="event.location === 'sellwood'">
               <a
                 href="https://www.google.com/maps/place/Sellwood+Park/@45.4674276,-122.6613082,17z/data=!4m5!3m4!1s0x54950addbff55de7:0x4331adb2384907f2!8m2!3d45.467673!4d-122.6603033"
                 target="_blank"
-                class="px-4 py-1 bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
+                class="
+                  px-4
+                  py-1
+                  bg-gray-900
+                  hover:bg-red-700
+                  transition
+                  duration-50
+                  rounded
+                  shadow
+                "
               >
                 <font-awesome-icon :icon="['fa', 'map-marked-alt']" />
                 <span class="pl-2">Sellwood Park</span>
@@ -31,12 +67,27 @@
             </template>
           </h4>
         </div>
-        <button
-          @click="showRsvpForm = !showRsvpForm"
-          class="block m-2 px-5 py-2 text-lg bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
-        >
-          {{ showRsvpForm ? 'Event Details' : 'RSVP' }}
-        </button>
+        <div>
+          <button
+            @click="showRsvpForm = !showRsvpForm"
+            class="
+              block
+              my-1
+              sm:m-2
+              px-5
+              py-1
+              text-lg
+              bg-gray-900
+              hover:bg-red-700
+              transition
+              duration-50
+              rounded
+              shadow
+            "
+          >
+            {{ showRsvpForm ? 'Event Details' : 'RSVP' }}
+          </button>
+        </div>
       </div>
     </div>
     <template v-if="!showRsvpForm">
@@ -86,7 +137,14 @@
     </FormulateForm>
     <div
       v-if="formStatus === 'SUCCESS' || formStatus === 'ERROR'"
-      class="mt-6 py-6 text-center text-2xl md:text-3xl font-piratesbay bg-gray-700"
+      class="
+        mt-6
+        py-6
+        text-center text-2xl
+        md:text-3xl
+        font-piratesbay
+        bg-gray-700
+      "
     >
       <template v-if="formStatus === 'SUCCESS'">Submission received!</template>
       <template v-if="formStatus === 'ERROR'"

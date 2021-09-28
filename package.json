@@ -1,8 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "dev": "vite --port 3333 --open",
+    "dev": "vite --open",
     "build": "cross-env NODE_ENV=production vite-ssg build",
+    "generate": "npm run build",
+    "build-functions": "netlify-lambda build functions",
     "preview": "vite preview",
     "preview-https": "serve dist",
     "lint": "eslint \"**/*.{vue,ts,js}\""

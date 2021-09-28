@@ -67,7 +67,7 @@ export default defineConfig({
       ],
 
       dts: 'src/components.d.ts',
-    }),
+    }), 
 
     // https://github.com/antfu/unplugin-icons
     Icons(),
@@ -99,25 +99,14 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'robots.txt', 'safari-pinned-tab.svg'],
       manifest: {
-        name: 'Vitesse',
-        short_name: 'Vitesse',
+        name: 'Blood on the Clocktower | Unofficial Portland Group',
+        short_name: 'PDXBOTC',
         theme_color: '#ffffff',
         icons: [
           {
-            src: '/pwa-192x192.png',
+            src: '/img/demon-head.png',
             sizes: '192x192',
             type: 'image/png',
-          },
-          {
-            src: '/pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-          {
-            src: '/pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any maskable',
           },
         ],
       },

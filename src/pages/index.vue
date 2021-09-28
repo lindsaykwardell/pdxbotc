@@ -25,8 +25,8 @@
       <div
         class="flex flex-col xl:flex-row w-11/12 md:w-[500px] lg:w-[750px] xl:w-11/12 bg-gray-800 text-white text-lg"
       >
-        <ClocktowerAtThePark class="xl:border-r border-b xl:border-b-0 border-gray-500" />
-        <ClocktowerOnline />
+        <ClocktowerAtThePark class="flex-1 xl:border-r border-b xl:border-b-0 border-gray-500" />
+        <ClocktowerOnline class="flex-1" />
       </div>
     </div>
     <ContactUs />

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="event" class="flex-1 p-3 w-full">
+  <div v-if="event" class="p-3 w-full">
     <div class="border-b border-gray-500 mb-4">
       <h3 class="text-2xl md:text-3xl text-white font-piratesbay flex-grow">
         {{ event.title }}
@@ -85,7 +85,7 @@
             "
             @click="showRsvpForm = !showRsvpForm"
           >
-            {{ showRsvpForm ? 'Event Details' : 'RSVP' }}
+            {{ showRsvpForm ? "Event Details" : "RSVP" }}
           </button>
         </div>
       </div>
@@ -98,6 +98,9 @@
       />
       <slot />
     </template>
+    <div v-else class="w-3/4 m-auto">
+      This is the submit form
+    </div>
     <!-- <FormulateForm
       v-else
       v-model="formValues"
@@ -149,9 +152,7 @@
       <template v-if="formStatus === 'SUCCESS'">
         Submission received!
       </template>
-      <template
-        v-if="formStatus === 'ERROR'"
-      >
+      <template v-if="formStatus === 'ERROR'">
         Something went wrong, try again
       </template>
     </div>
@@ -159,15 +160,15 @@
 </template>
 
 <script lang="ts">
-import dayjs from 'dayjs'
-import axios from 'axios'
+import dayjs from "dayjs";
+import axios from "axios";
 
 const Status = {
-  IDLE: 'IDLE',
-  SUBMITTING: 'SUBMITTING',
-  SUCCESS: 'SUCCESS',
-  ERROR: 'ERROR',
-}
+  IDLE: "IDLE",
+  SUBMITTING: "SUBMITTING",
+  SUCCESS: "SUCCESS",
+  ERROR: "ERROR",
+};
 
 export default {
   props: {
@@ -181,35 +182,37 @@ export default {
       showRsvpForm: false,
       formValues: {},
       formStatus: Status.IDLE,
-    }
+    };
   },
   computed: {
     enableForm() {
-      return this.formStatus === Status.IDLE || this.formStatus === Status.ERROR
+      return (
+        this.formStatus === Status.IDLE || this.formStatus === Status.ERROR
+      );
     },
   },
   methods: {
     formatEventDate(date) {
-      return dayjs(date).format('MM/DD/YYYY h:mm a')
+      return dayjs(date).format("MM/DD/YYYY h:mm a");
     },
     submitRsvpForm() {
-      if (!this.enableForm) return
+      if (!this.enableForm) return;
 
-      this.formStatus = Status.SUBMITTING
+      this.formStatus = Status.SUBMITTING;
 
       axios
-        .post('/.netlify/functions/rsvp', {
+        .post("/.netlify/functions/rsvp", {
           ...this.formValues,
           eventName: this.event.title,
           eventDate: this.formatEventDate(this.event.date),
         })
         .then(() => {
-          this.formStatus = Status.SUCCESS
+          this.formStatus = Status.SUCCESS;
         })
         .catch(() => {
-          this.formStatus = Status.ERROR
-        })
+          this.formStatus = Status.ERROR;
+        });
     },
   },
-}
+};
 </script>

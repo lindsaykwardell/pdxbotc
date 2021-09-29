@@ -3,17 +3,15 @@ import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
-import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Markdown from 'vite-plugin-md'
 import WindiCSS from 'vite-plugin-windicss'
 import { VitePWA } from 'vite-plugin-pwa'
-import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Inspect from 'vite-plugin-inspect'
 import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
+import viteImagemin from 'vite-plugin-imagemin'
 
 const markdownWrapperClasses = 'py-4'
 
@@ -58,19 +56,10 @@ export default defineConfig({
 
       // custom resolvers
       resolvers: [
-        // auto import icons
-        // https://github.com/antfu/unplugin-icons
-        IconsResolver({
-          componentPrefix: '',
-          // enabledCollections: ['carbon']
-        }),
       ],
 
       dts: 'src/components.d.ts',
-    }), 
-
-    // https://github.com/antfu/unplugin-icons
-    Icons(),
+    }),
 
     // https://github.com/antfu/vite-plugin-windicss
     WindiCSS({
@@ -112,17 +101,38 @@ export default defineConfig({
       },
     }),
 
-    // https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n
-    VueI18n({
-      runtimeOnly: true,
-      compositionOnly: true,
-      include: [path.resolve(__dirname, 'locales/**')],
-    }),
-
     // https://github.com/antfu/vite-plugin-inspect
     Inspect({
       // change this to enable inspect for debugging
       enabled: false,
+    }),
+
+    viteImagemin({
+      gifsicle: {
+        optimizationLevel: 7,
+        interlaced: false,
+      },
+      optipng: {
+        optimizationLevel: 7,
+      },
+      mozjpeg: {
+        quality: 20,
+      },
+      pngquant: {
+        quality: [0.8, 0.9],
+        speed: 4,
+      },
+      svgo: {
+        plugins: [
+          {
+            name: 'removeViewBox',
+          },
+          {
+            name: 'removeEmptyAttrs',
+            active: false,
+          },
+        ],
+      },
     }),
   ],
 

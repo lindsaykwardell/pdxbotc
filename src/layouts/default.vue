@@ -11,7 +11,7 @@
           class="text-xl font-piratesbay text-gray-300"
         >UNOFFICIAL Portland, OR</span>
       </div>
-      <div
+      <nav
         class="pt-2 flex-grow flex flex-col md:flex-row justify-center md:justify-end items-end md:items-center h-24 text-2xl"
       >
         <a
@@ -46,7 +46,7 @@
           <font-awesome-icon :icon="['fa', 'envelope']" />
           <span class="hidden sm:inline pl-2 hover:underline">Email</span>
         </a>
-      </div>
+      </nav>
     </div>
     <router-view />
   </div>

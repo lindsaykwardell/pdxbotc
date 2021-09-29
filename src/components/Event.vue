@@ -98,46 +98,39 @@
       />
       <slot />
     </template>
-    <div v-else class="w-3/4 m-auto">
-      This is the submit form
-    </div>
-    <!-- <FormulateForm
-      v-else
-      v-model="formValues"
-      :disabled="!enableForm"
-      class="w-3/4 m-auto"
-      @submit="submitRsvpForm"
-    >
-      <FormulateInput
-        name="name"
-        type="text"
-        label="Your name"
-        placeholder="Your name"
-        validation="required"
-        class="mb-6"
-        label-class="font-piratesbay text-xl pb-2"
-        input-class="w-full bg-gray-900 shadow p-2 disabled:text-gray-500"
-        errors-class="text-sm"
-        :disabled="!enableForm"
-      />
-      <FormulateInput
-        name="email"
-        type="email"
-        label="Email Address"
-        placeholder="your@address.here"
-        class="mb-6"
-        label-class="font-piratesbay text-xl pb-2"
-        input-class="w-full bg-gray-900 shadow p-2 disabled:text-gray-500"
-        errors-class="text-sm"
-        :disabled="!enableForm"
-      />
-      <FormulateInput
-        type="submit"
-        label="Submit Registration"
-        input-class="block m-auto px-5 py-2 text-xl bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow disabled:text-gray-500 disabled:hover:bg-gray-900 disabled:cursor-default"
-        :disabled="!enableForm"
-      />
-    </FormulateForm> -->
+    <form v-else class="w-3/4 m-auto" @submit.prevent="submitRsvpForm">
+      <div class="mb-6">
+        <label class="font-piratesbay text-xl">
+          Your name
+          <input
+            v-model="formValues.name"
+            name="name"
+            type="text"
+            placeholder="Your name"
+            required
+            class="font-sans w-full bg-gray-900 shadow p-2 disabled:text-gray-500"
+          />
+        </label>
+      </div>
+      <div class="mb-6">
+        <label class="font-piratesbay text-xl">
+          Email address
+          <input
+            v-model="formValues.email"
+            name="name"
+            type="email"
+            placeholder="your@address.here"
+            required
+            class="font-sans w-full bg-gray-900 shadow p-2 disabled:text-gray-500"
+          />
+        </label>
+      </div>
+      <button
+        class="block m-auto px-5 py-2 text-xl bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow disabled:text-gray-500 disabled:hover:bg-gray-900"
+      >
+        Submit Registration
+      </button>
+    </form>
     <div
       v-if="formStatus === 'SUCCESS' || formStatus === 'ERROR'"
       class="
@@ -159,60 +152,52 @@
   </div>
 </template>
 
-<script lang="ts">
-import dayjs from "dayjs";
-import axios from "axios";
+<script setup lang="ts">
+import dayjs from 'dayjs'
+import axios from 'axios'
 
 const Status = {
-  IDLE: "IDLE",
-  SUBMITTING: "SUBMITTING",
-  SUCCESS: "SUCCESS",
-  ERROR: "ERROR",
-};
+  IDLE: 'IDLE',
+  SUBMITTING: 'SUBMITTING',
+  SUCCESS: 'SUCCESS',
+  ERROR: 'ERROR',
+}
 
-export default {
-  props: {
-    event: {
-      type: Object,
-      default: null,
-    },
+const props = defineProps({
+  event: {
+    type: Object,
+    default: null,
   },
-  data() {
-    return {
-      showRsvpForm: false,
-      formValues: {},
-      formStatus: Status.IDLE,
-    };
-  },
-  computed: {
-    enableForm() {
-      return (
-        this.formStatus === Status.IDLE || this.formStatus === Status.ERROR
-      );
-    },
-  },
-  methods: {
-    formatEventDate(date) {
-      return dayjs(date).format("MM/DD/YYYY h:mm a");
-    },
-    submitRsvpForm() {
-      if (!this.enableForm) return;
+})
 
-      this.formStatus = Status.SUBMITTING;
+const showRsvpForm = ref(false)
+const formValues = reactive({
+  name: '',
+  email: '',
+})
+const formStatus = ref(Status.IDLE)
 
-      axios
-        .post("/.netlify/functions/rsvp", {
-          ...this.formValues,
-          eventName: this.event.title,
-          eventDate: this.formatEventDate(this.event.date),
-        })
-        .then(() => {
-          this.formStatus = Status.SUCCESS;
-        })
-        .catch(() => {
-          this.formStatus = Status.ERROR;
-        });
-    },
-  },
-};
+const enableForm = computed(() => formStatus.value === Status.IDLE || formStatus.value === Status.ERROR)
+
+function formatEventDate(date: Date) {
+  return dayjs(date).format('MM/DD/YYYY h:mm a')
+}
+function submitRsvpForm() {
+  if (!enableForm.value) return
+
+  formStatus.value = Status.SUBMITTING
+
+  axios
+    .post('/.netlify/functions/rsvp', {
+      ...formValues,
+      eventName: props.event.title,
+      eventDate: formatEventDate(props.event.date),
+    })
+    .then(() => {
+      formStatus.value = Status.SUCCESS
+    })
+    .catch(() => {
+      formStatus.value = Status.ERROR
+    })
+}
 </script>

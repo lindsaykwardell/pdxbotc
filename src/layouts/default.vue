@@ -4,7 +4,7 @@
       <div class="flex flex-col items-center justify-center w-64">
         <img
           class="h-20"
-          src="https://bloodontheclocktower.com/img/website/logo.png?rel=1591572107883"
+          src="https://cdn.shopify.com/s/files/1/0574/6701/1226/t/4/assets/botc_logo.png?v=14869464040856810736"
           alt="Blood on the Clocktower"
         />
         <span

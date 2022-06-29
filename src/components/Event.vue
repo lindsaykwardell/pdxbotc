@@ -65,6 +65,25 @@
                 <span class="pl-2">Sellwood Park</span>
               </a>
             </template>
+            <template v-if="event.location === 'gabriel'">
+              <a
+                href="https://www.google.com/maps/place/Gabriel+Park/@45.474297,-122.7212976,17z/data=!3m1!4b1!4m5!3m4!1s0x54950b9e2e29be41:0x7a5abaa35d8f5bb3!8m2!3d45.474297!4d-122.7191089"
+                target="_blank"
+                class="
+                  px-4
+                  py-1
+                  bg-gray-900
+                  hover:bg-red-700
+                  transition
+                  duration-50
+                  rounded
+                  shadow
+                "
+              >
+                <font-awesome-icon :icon="['fa', 'map-marked-alt']" />
+                <span class="pl-2">Gabriel Park</span>
+              </a>
+            </template>
           </h4>
         </div>
         <div>

@@ -23,10 +23,9 @@
         </div>
       </div>
       <div
-        class="flex flex-col xl:flex-row w-11/12 md:w-[500px] lg:w-[750px] xl:w-11/12 bg-gray-800 text-white text-lg"
+        class="flex flex-col md:w-[500px] lg:w-[750px] bg-gray-800 text-white text-lg"
       >
-        <ClocktowerAtThePark class="flex-1 xl:border-r border-b xl:border-b-0 border-gray-500" />
-        <ClocktowerOnline class="flex-1" />
+        <NextGame class="flex-1" />
       </div>
     </div>
     <ContactUs />
@@ -59,8 +58,8 @@
 import Welcome from '../content/text/welcome.md'
 import CovidGuidelines from '../content/text/covid-guidelines.md'
 import UpcomingEventsSubtitle from '../content/text/upcoming-events-subtitle.md'
-import ClocktowerAtThePark from '../content/events/clocktower-at-the-park.md'
-import ClocktowerOnline from '../content/events/clocktower-online.md'
+// import ClocktowerAtThePark from '../content/events/clocktower-at-the-park.md'
+import NextGame from '../content/events/next-game.md'
 </script>
 
 <style lang="postcss" scoped>

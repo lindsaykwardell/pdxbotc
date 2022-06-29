@@ -1,0 +1,17 @@
+@font-face {
+  font-family: PiratesBay;
+  src: url(/fonts/piratesbay.ttf);
+}
+
+.prose * {
+  color: white !important;
+}
+
+.demon-head-wrapper {
+  max-height: 440px;
+  max-width: 366px;
+}
+
+svg {
+  display: inline !important;
+}

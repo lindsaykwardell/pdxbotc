@@ -11,7 +11,7 @@ declare module 'vue' {
     CarbonMoon: typeof import('~icons/carbon/moon')['default']
     CarbonSun: typeof import('~icons/carbon/sun')['default']
     ContactUs: typeof import('./components/ContactUs.vue')['default']
-    Event: typeof import('./components/Event.vue')['default']
+    Event: typeof import('../../src/Event.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     Logo: typeof import('./components/Logo.vue')['default']
     Markdown: typeof import('./components/Markdown.vue')['default']

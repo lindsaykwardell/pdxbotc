@@ -1,0 +1,42 @@
+<template>
+  <div class="w-full xl:w-[1200px] lg:w-[1100px] bg-gray-900 text-white text-lg p-5 m-auto mt-12">
+    <h2 class="text-3xl md:text-4xl text-white font-piratesbay text-center mb-4">
+      Ready for a Night at the Clocktower?
+    </h2>
+    <p class="py-3 w-full lg:w-[850px] m-auto">
+      We'd love to have you join us! Find us on social media, Discord, or contact us by email. We look forward to hearing from you!
+    </p>
+    <div
+      class="pt-8 flex justify-around text-2xl w-full md:w-[500px] m-auto"
+    >
+      <a
+        href="https://twitter.com/pdxbotc"
+        target="_blank"
+        class="py-1 px-4 text-white hover:text-red-600 transition duration-50 font-piratesbay"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32"><path fill="currentColor" d="M11.92 24.94A12.76 12.76 0 0 0 24.76 12.1v-.59A9.4 9.4 0 0 0 27 9.18a9.31 9.31 0 0 1-2.59.71a4.56 4.56 0 0 0 2-2.5a8.89 8.89 0 0 1-2.86 1.1a4.52 4.52 0 0 0-7.7 4.11a12.79 12.79 0 0 1-9.3-4.71a4.51 4.51 0 0 0 1.4 6a4.47 4.47 0 0 1-2-.56v.05a4.53 4.53 0 0 0 3.55 4.45a4.53 4.53 0 0 1-2 .08A4.51 4.51 0 0 0 11.68 21a9.05 9.05 0 0 1-5.61 2A9.77 9.77 0 0 1 5 22.91a12.77 12.77 0 0 0 6.92 2"></path></svg>
+      </a>
+      <a
+        href="https://www.facebook.com/groups/BOTCPDX"
+        target="_blank"
+        class="py-1 px-4 text-white hover:text-red-600 transition duration-50 font-piratesbay"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32"><path fill="currentColor" d="M26.67 4H5.33A1.34 1.34 0 0 0 4 5.33v21.34A1.34 1.34 0 0 0 5.33 28h11.49v-9.28H13.7v-3.63h3.12v-2.67c0-3.1 1.89-4.79 4.67-4.79c.93 0 1.86 0 2.79.14V11h-1.91c-1.51 0-1.8.72-1.8 1.77v2.31h3.6l-.47 3.63h-3.13V28h6.1A1.34 1.34 0 0 0 28 26.67V5.33A1.34 1.34 0 0 0 26.67 4Z"></path></svg> 
+      </a>
+      <a
+        href="https://discord.gg/HMVv8rgFTY"
+        target="_blank"
+        class="py-1 px-4 text-white hover:text-red-600 transition duration-50 font-piratesbay"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32"><path fill="currentColor" d="M13.647 14.907a1.448 1.448 0 1 0 1.326 1.443a1.385 1.385 0 0 0-1.326-1.443Zm4.745 0a1.448 1.448 0 1 0 1.326 1.443a1.385 1.385 0 0 0-1.326-1.443Z"></path><path fill="currentColor" d="M24.71 4H7.29a2.671 2.671 0 0 0-2.665 2.678v17.576a2.671 2.671 0 0 0 2.665 2.678h14.742l-.689-2.405l1.664 1.547l1.573 1.456L27.375 30V6.678A2.671 2.671 0 0 0 24.71 4Zm-5.018 16.978s-.468-.559-.858-1.053a4.102 4.102 0 0 0 2.353-1.547a7.44 7.44 0 0 1-1.495.767a8.556 8.556 0 0 1-1.885.559a9.107 9.107 0 0 1-3.367-.013a10.913 10.913 0 0 1-1.911-.559a7.618 7.618 0 0 1-.949-.442c-.039-.026-.078-.039-.117-.065a.18.18 0 0 1-.052-.039a4.56 4.56 0 0 1-.364-.221a4.043 4.043 0 0 0 2.275 1.534c-.39.494-.871 1.079-.871 1.079a4.713 4.713 0 0 1-3.965-1.976a17.409 17.409 0 0 1 1.872-7.579a6.428 6.428 0 0 1 3.653-1.365l.13.156a8.77 8.77 0 0 0-3.419 1.703s.286-.156.767-.377a9.762 9.762 0 0 1 2.951-.819a1.28 1.28 0 0 1 .221-.026a11 11 0 0 1 2.626-.026a10.597 10.597 0 0 1 3.913 1.248a8.652 8.652 0 0 0-3.237-1.651l.182-.208a6.428 6.428 0 0 1 3.653 1.365a17.409 17.409 0 0 1 1.872 7.579a4.752 4.752 0 0 1-3.978 1.976Z"></path></svg>
+      </a>
+      <a
+        href="mailto:pdxbotc@gmail.com"
+        target="_blank"
+        class="py-1 px-4 text-white hover:text-red-600 transition duration-50 font-piratesbay"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32"><path fill="currentColor" d="M28 6H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2Zm-2.2 2L16 14.78L6.2 8ZM4 24V8.91l11.43 7.91a1 1 0 0 0 1.14 0L28 8.91V24Z"></path></svg>
+      </a>
+    </div>
+  </div>
+</template>

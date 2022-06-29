@@ -2,7 +2,7 @@
 title: Clocktower at the Park
 date: 2022-03-31T01:00:00.000Z
 location: gabriel
-image: /img/ravenswoodinflames.jpg
+image: /img/event-banner.jpg
 ---
 <Event :event="frontmatter">
 

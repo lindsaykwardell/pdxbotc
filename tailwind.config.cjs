@@ -1,19 +1,11 @@
-import { defineConfig } from 'windicss/helpers'
-import colors from 'windicss/colors'
-import typography from 'windicss/plugin/typography'
-
-export default defineConfig({
-  darkMode: 'class',
-  // https://windicss.org/posts/v30.html#attributify-mode
-  attributify: true,
-
-  plugins: [
-    typography(),
-  ],
-  theme: {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+	content: ['./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}'],
+	theme: {
     extend: {
       fontFamily: {
         piratesbay: ['PiratesBay', 'serif'],
+        roboto: ['Roboto Slab', 'serif']
       },
       colors: {
         'botc-white': 'rgb(238,238,238)',
@@ -30,7 +22,7 @@ export default defineConfig({
               'textDecoration': 'underline',
               '&:hover': {
                 opacity: 1,
-                color: colors.teal[600],
+                // color: colors.teal[600],
               },
             },
             b: { color: 'inherit' },
@@ -46,4 +38,7 @@ export default defineConfig({
       },
     },
   },
-})
+	plugins: [
+		require('@tailwindcss/typography')
+	],
+}

@@ -1,6 +1,6 @@
 ---
 title: Clocktower at the Park
-date: 2022-03-31T01:00:00.000Z
+date: 2022-07-02T01:00:00.000Z
 location: gabriel
 image: /img/event-banner.jpg
 ---

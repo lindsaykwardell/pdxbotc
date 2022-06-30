@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         piratesbay: ['PiratesBay', 'serif'],
+        roboto: ['Roboto Slab', 'serif']
       },
       colors: {
         'botc-white': 'rgb(238,238,238)',

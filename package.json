@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "genereate": "astro build",
     "build-functions": "netlify-lambda build functions",
     "preview": "astro preview"
   },

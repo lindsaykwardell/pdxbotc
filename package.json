@@ -5,7 +5,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "generate": "astro build",
-    "build-functions": "netlify-lambda build functions",
+    "build-functions": "echo deprecated",
     "preview": "astro preview"
   },
   "devDependencies": {
@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "@astrojs/netlify": "^0.4.10",
-    "dayjs": "^1.11.3",
-    "netlify-lambda": "^2.0.3"
+    "dayjs": "^1.11.3"
   }
 }

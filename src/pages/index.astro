@@ -2,7 +2,7 @@
 import dayjs from "dayjs";
 
 import DefaultLayout from "../layouts/DefaultLayout.astro";
-import Event from '../components/Event.vue'
+import Events from '../components/Events.vue'
 import ContactUs from "../components/ContactUs.vue";
 
 import * as Welcome from '../content/text/welcome.md'
@@ -15,44 +15,44 @@ const covidGuidelines = await CovidGuidelines.compiledContent()
 const upcomingEventsSubtitle = await UpcomingEventsSubtitle.compiledContent()
 const nextGameText = await NextGame.compiledContent()
 
-function waitfor(time) {
-	return new Promise(resolve => {
-		setTimeout(() => {
-			resolve()
-		}, time);
-	})
-}
+// function waitfor(time) {
+// 	return new Promise(resolve => {
+// 		setTimeout(() => {
+// 			resolve()
+// 		}, time);
+// 	})
+// }
 
-let events
+// let events
 
-while (!events) {
-	const res = await (
-			await fetch(`https://discord.com/api/v10/guilds/${import.meta.env.PUBLIC_SERVER_ID}/scheduled-events`, 
-			{
-				method: 'GET',
-				headers: {
-					'Authorization': `Bot ${import.meta.env.SECRET_BOT_TOKEN}`
-				}
-			})).json()
-	if (res.global === false) {
-		await waitfor(res.retry_after)
-	} else {
-		events = res
-	}
-}
+// while (!events) {
+// 	const res = await (
+// 			await fetch(`https://discord.com/api/v10/guilds/${import.meta.env.PUBLIC_SERVER_ID}/scheduled-events`, 
+// 			{
+// 				method: 'GET',
+// 				headers: {
+// 					'Authorization': `Bot ${import.meta.env.SECRET_BOT_TOKEN}`
+// 				}
+// 			})).json()
+// 	if (res.global === false) {
+// 		await waitfor(res.retry_after)
+// 	} else {
+// 		events = res
+// 	}
+// }
 
-events = events.map(event => ({
-	id: event.id,
-	title: event.name,
-	date: event.scheduled_start_time,
-	location: event.entity_metadata.location,
-	description: event.description,
-	image: `https://cdn.discordapp.com/guild-events/${event.id}/${event.image}.webp?size=1024`
-})).sort((a, b) => a.date < b.date ? -1 : 1)
+// events = events.map(event => ({
+// 	id: event.id,
+// 	title: event.name,
+// 	date: event.scheduled_start_time,
+// 	location: event.entity_metadata.location,
+// 	description: event.description,
+// 	image: `https://cdn.discordapp.com/guild-events/${event.id}/${event.image}.webp?size=1024`
+// })).sort((a, b) => a.date < b.date ? -1 : 1)
 
-function formatEventDate(date: Date) {
-  return dayjs(date).format("MM/DD/YYYY h:mm a");
-}
+// function formatEventDate(date: Date) {
+//   return dayjs(date).format("MM/DD/YYYY h:mm a");
+// }
 ---
 
 <DefaultLayout>
@@ -76,9 +76,10 @@ function formatEventDate(date: Date) {
 				<div class="w-11/12 md:w-3/5 py-4 prose max-w-none m-auto" set:html={upcomingEventsSubtitle} />
 			</div>
 			<div class="flex flex-col md:w-[500px] lg:w-[750px] text-white text-lg gap-6">
-				{events.map(event => 
+				<Events client:idle />
+				<!-- {events.map(event => 
 					<Event event={event} client:idle />
-				)}
+				)} -->
 			</div>
 		</div>
 		<ContactUs />

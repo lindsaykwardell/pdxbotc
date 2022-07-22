@@ -15,16 +15,30 @@ const covidGuidelines = await CovidGuidelines.compiledContent()
 const upcomingEventsSubtitle = await UpcomingEventsSubtitle.compiledContent()
 const nextGameText = await NextGame.compiledContent()
 
-let events = await (await fetch(`https://discord.com/api/v10/guilds/${import.meta.env.PUBLIC_SERVER_ID}/scheduled-events`, {
-	method: 'GET',
-	headers: {
-		'Authorization': `Bot ${import.meta.env.SECRET_BOT_TOKEN}`
-	}
-})).json()
+function waitfor(time) {
+	return new Promise(resolve => {
+		setTimeout(() => {
+			resolve()
+		}, time);
+	})
+}
 
-if (events.global === false) {
-	console.log(events)
-	throw events.message
+let events
+
+while (!events) {
+	const res = await (
+			await fetch(`https://discord.com/api/v10/guilds/${import.meta.env.PUBLIC_SERVER_ID}/scheduled-events`, 
+			{
+				method: 'GET',
+				headers: {
+					'Authorization': `Bot ${import.meta.env.SECRET_BOT_TOKEN}`
+				}
+			})).json()
+	if (res.global === false) {
+		await waitfor(res.retry_after)
+	} else {
+		events = res
+	}
 }
 
 events = events.map(event => ({

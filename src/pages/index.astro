@@ -57,16 +57,16 @@ const nextGameText = await NextGame.compiledContent()
 
 <DefaultLayout>
 	<main class="py-5">
-		<div class="flex flex-col-reverse lg:flex-row items-center py-5 text-gray-300 container m-auto">
+		<div class="flex flex-col lg:flex-row items-center py-5 text-gray-300 container m-auto">
+			<aside class="demon-head-wrapper w-2/5">
+				<img src="/img/demon-head.png" class="demon-head" alt="Demon Head" />
+			</aside>
 			<section class="w-11/12 lg:w-3/5 p-5 bg-gray-800 shadow m-5">
 				<h1 class="text-2xl font-piratesbay text-center p-2">
 					Welcome to the Portland, OR, Blood on the Clocktower group!
 				</h1>
 				<div class="prose max-w-none m-auto p-4" set:html={welcomeText} />
 			</section>
-			<aside class="demon-head-wrapper w-2/5">
-				<img src="/img/demon-head.png" class="demon-head" alt="Demon Head" />
-			</aside>
 		</div>
 		<div class="flex flex-col items-center">
 			<div class="py-4 flex flex-col items-center">

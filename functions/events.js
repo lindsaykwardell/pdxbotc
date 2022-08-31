@@ -13,7 +13,7 @@ export async function handler() {
           date: event.scheduled_start_time,
           location: event.entity_metadata?.location,
           description: event.description,
-          image: `https://cdn.discordapp.com/guild-events/${event.id}/${event.image}.webp?size=1024`,
+          image: event.image && `https://cdn.discordapp.com/guild-events/${event.id}/${event.image}.webp?size=1024`,
         }))
         .sort((a, b) => (a.date < b.date ? -1 : 1))
     ),

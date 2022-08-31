@@ -113,7 +113,7 @@
         </div>
       </div>
     </div>
-    <img :src="event.image" alt="Next In-Person Event Banner" />
+    <img v-if="event.image" :src="event.image" alt="Next In-Person Event Banner" />
     <div
       v-if="!showRsvpForm"
       class="p-6 prose max-w-none m-auto whitespace-pre-wrap"

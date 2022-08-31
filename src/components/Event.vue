@@ -10,7 +10,7 @@
           <h4>
             Where:
             <a
-              v-if="event.location.toLowerCase().includes('online')"
+              v-if="!event.location"
               href="https://discord.gg/HMVv8rgFTY"
               target="_blank"
               class="px-4 py-2 bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"

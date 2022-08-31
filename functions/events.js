@@ -11,7 +11,7 @@ export async function handler() {
           id: event.id,
           title: event.name,
           date: event.scheduled_start_time,
-          location: event.entity_metadata.location,
+          location: event.entity_metadata?.location,
           description: event.description,
           image: `https://cdn.discordapp.com/guild-events/${event.id}/${event.image}.webp?size=1024`,
         }))

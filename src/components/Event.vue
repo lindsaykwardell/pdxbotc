@@ -1,5 +1,5 @@
 <template>
-  <div v-if="event" class="p-3 w-full bg-gray-800">
+  <div v-if="event" class="p-3 w-full bg-gray-800 my-4">
     <div class="border-b border-gray-500 mb-4 p-4">
       <h3 class="text-2xl md:text-3xl text-white font-piratesbay flex-grow">
         {{ event.title }}

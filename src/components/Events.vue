@@ -1,8 +1,8 @@
 <template>
   <div v-if="!loaded">Loading, please wait</div>
-  <tempalte v-else>
+  <template v-else>
     <Event v-for="event in events" :key="event.id" :event="event" />
-  </tempalte>
+  </template>
 </template>
 
 <script setup>

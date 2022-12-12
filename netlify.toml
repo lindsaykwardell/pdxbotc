@@ -1,2 +1,7 @@
 [build]
   functions = "./lambda"
+
+[[redirects]]
+  from = "/discord"
+  to = "https://discord.com/invite/HMVv8rgFTY"
+  status = 302

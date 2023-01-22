@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@astrojs/netlify": "^0.4.10",
+    "@netlify/functions": "^1.4.0",
     "axios": "^0.27.2",
     "dayjs": "^1.11.3",
     "netlify-lambda": "^2.0.3"

@@ -94,4 +94,4 @@ If this is your first time playing with the official app please do the following
   };
 };
 
-exports.handler = schedule("@weekly", myHandler);
+exports.handler = schedule("0 0 * * 1", myHandler);

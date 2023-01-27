@@ -1,8 +1,10 @@
-import { schedule } from "@netlify/functions";
-import axios from "axios";
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
+// Rewrite the imports using cjs
+
+const { schedule } = require("@netlify/functions");
+const axios = require("axios");
+const dayjs = require("dayjs");
+const utc = require("dayjs/plugin/utc");
+const timezone = require("dayjs/plugin/timezone");
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -52,6 +54,4 @@ If this is your first time playing with the official app please do the following
   };
 };
 
-const handler = schedule("0 0 * * 4", myHandler);
-
-export { handler };
+exports.handler = schedule("0 0 * * 4", myHandler);

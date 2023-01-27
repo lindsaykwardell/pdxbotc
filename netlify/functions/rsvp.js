@@ -1,22 +1,22 @@
-import axios from 'axios'
+const axios = require("axios");
 
-export async function handler(event, context) {
-  const payload = JSON.parse(event.body)
-  const { name, email, eventName, eventDate } = payload
+exports.handler = async function (event, context) {
+  const payload = JSON.parse(event.body);
+  const { name, email, eventName, eventDate } = payload;
 
   try {
     const res = await axios.post(process.env.RSVP_URL, {
       content: `${name} (${
-        email ? email : 'No email provided'
+        email ? email : "No email provided"
       }) has registered for ${eventName} on ${eventDate}`,
-    })
+    });
 
     return {
       statusCode: 200,
       body: JSON.stringify({
         success: true,
       }),
-    }
+    };
   } catch (err) {
     return {
       statusCode: 400,
@@ -24,6 +24,6 @@ export async function handler(event, context) {
         success: false,
         err,
       }),
-    }
+    };
   }
-}
+};

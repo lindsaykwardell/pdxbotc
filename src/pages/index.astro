@@ -17,7 +17,7 @@ import * as Welcome from '../content/text/welcome.md'
 import * as CovidGuidelines from '../content/text/covid-guidelines.md'
 import * as NextGame from '../content/events/next-game.md'
 
-const welcomeText = await Welcome.compiledContent()
+const welcomeText = (await Welcome.compiledContent())
 const covidGuidelines = await CovidGuidelines.compiledContent()
 
 const events = await fetchEvents();

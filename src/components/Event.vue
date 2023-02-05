@@ -1,5 +1,5 @@
 <template>
-  <div v-if="event" class="p-3 w-full bg-gray-800 my-4">
+  <div v-if="event" class="w-full bg-gray-800 my-4">
     <div class="border-b border-gray-500 mb-4 p-4">
       <h3 class="text-2xl md:text-3xl text-white font-piratesbay flex-grow">
         {{ event.title }}
@@ -113,7 +113,7 @@
         </div>
       </div>
     </div>
-    <img v-if="event.image" :src="event.image" alt="Next In-Person Event Banner" />
+    <img v-if="event.image" :src="event.image" />
     <div
       v-if="!showRsvpForm"
       class="p-6 prose max-w-none m-auto whitespace-pre-wrap"

@@ -38,9 +38,9 @@ If this is your first time playing with the official app please do the following
 
 1 - Visit http://online.bloodontheclocktower.com/login and signup for an account. 
 
-2 - Once you are logged in click “Setup Mic/Cam” to give permissions to the application to use those devices. 
+2 - Once you are logged in click "Setup Mic/Cam" to give permissions to the application to use those devices. 
 
-3 - Press the letter “j” and join our Session ID: pdxbotc`,
+3 - Press the letter "j" and join our Session ID: pdxbotc`,
         entity_type: "3",
         entity_metadata: {
           location: "https://online.bloodontheclocktower.com/#pdxbotc",
@@ -70,9 +70,9 @@ If this is your first time playing with the official app please do the following
 
 1 - Visit http://online.bloodontheclocktower.com/login and signup for an account. 
 
-2 - Once you are logged in click “Setup Mic/Cam” to give permissions to the application to use those devices. 
+2 - Once you are logged in click "Setup Mic/Cam" to give permissions to the application to use those devices. 
 
-3 - Press the letter “j” and join our Session ID: pdxbotc`,
+3 - Press the letter "j" and join our Session ID: pdxbotc`,
         entity_type: "3",
         entity_metadata: {
           location: "https://online.bloodontheclocktower.com/#pdxbotc",

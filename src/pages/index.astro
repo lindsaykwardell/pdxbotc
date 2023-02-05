@@ -1,8 +1,16 @@
 ---
-import dayjs from "dayjs";
+import { db } from '../api/firebase'
+import {
+  doc,
+  setDoc,
+  getDocs,
+  collection,
+	deleteDoc,
+} from "firebase/firestore";
+import axios from 'axios'
 
 import DefaultLayout from "../layouts/DefaultLayout.astro";
-import Events from '../components/Events.vue'
+import Event from '../components/Event.vue'
 import ContactUs from "../components/ContactUs.vue";
 
 import * as Welcome from '../content/text/welcome.md'
@@ -11,46 +19,62 @@ import * as NextGame from '../content/events/next-game.md'
 
 const welcomeText = await Welcome.compiledContent()
 const covidGuidelines = await CovidGuidelines.compiledContent()
-const nextGameText = await NextGame.compiledContent()
 
-// function waitfor(time) {
-// 	return new Promise(resolve => {
-// 		setTimeout(() => {
-// 			resolve()
-// 		}, time);
-// 	})
-// }
+const events = await fetchEvents();
 
-// let events
+if (events.length) {
+	const eventDocs = await getDocs(collection(db, "events"));
 
-// while (!events) {
-// 	const res = await (
-// 			await fetch(`https://discord.com/api/v10/guilds/${import.meta.env.PUBLIC_SERVER_ID}/scheduled-events`, 
-// 			{
-// 				method: 'GET',
-// 				headers: {
-// 					'Authorization': `Bot ${import.meta.env.SECRET_BOT_TOKEN}`
-// 				}
-// 			})).json()
-// 	if (res.global === false) {
-// 		await waitfor(res.retry_after)
-// 	} else {
-// 		events = res
-// 	}
-// }
+	const eventList = [];
 
-// events = events.map(event => ({
-// 	id: event.id,
-// 	title: event.name,
-// 	date: event.scheduled_start_time,
-// 	location: event.entity_metadata.location,
-// 	description: event.description,
-// 	image: `https://cdn.discordapp.com/guild-events/${event.id}/${event.image}.webp?size=1024`
-// })).sort((a, b) => a.date < b.date ? -1 : 1)
+	eventDocs.forEach((doc) => {
+		eventList.push(doc.data());
+	});
 
-// function formatEventDate(date: Date) {
-//   return dayjs(date).format("MM/DD/YYYY h:mm a");
-// }
+	for (const event of eventList) {
+		await deleteDoc(doc(db, "events", event.id));
+	}
+}
+
+for (const event of events) {
+	await setDoc(doc(db, "events", event.id), {
+		id: event.id,
+		title: event.name,
+		date: event.scheduled_start_time,
+		location: event.entity_metadata?.location,
+		description: event.description,
+		image:
+			event.image &&
+			`https://cdn.discordapp.com/guild-events/${event.id}/${event.image}.webp?size=1024`,
+	});
+}
+
+const eventDocs = await getDocs(collection(db, "events"));
+
+const eventList = [];
+
+eventDocs.forEach((doc) => {
+	eventList.push(doc.data());
+});
+
+eventList.sort((a, b) => (a.date < b.date ? -1 : 1));
+
+async function fetchEvents() {
+  try {
+    return (
+      await axios.get(
+        `https://discord.com/api/v10/guilds/${import.meta.env.PUBLIC_SERVER_ID}/scheduled-events`,
+        {
+          headers: {
+            Authorization: `Bot ${import.meta.env.SECRET_BOT_TOKEN}`,
+          },
+        }
+      )
+    ).data;
+  } catch (_) {
+    return [];
+  }
+}
 ---
 
 <DefaultLayout>
@@ -73,10 +97,9 @@ const nextGameText = await NextGame.compiledContent()
 				</h2>
 			</div>
 			<div class="flex flex-col md:w-[500px] lg:w-[750px] text-white text-lg gap-6">
-				<Events client:idle />
-				<!-- {events.map(event => 
+				{eventList.map(event => 
 					<Event event={event} client:idle />
-				)} -->
+				)}
 			</div>
 		</div>
 		<ContactUs />

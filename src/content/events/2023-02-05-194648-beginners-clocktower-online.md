@@ -1,6 +1,7 @@
 ---
 title: Beginners(+) Clocktower Online
 date: 1
+duration: 4
 image: /img/monday.jpg
 ---
 On Mondays we welcome players new to Clocktower (0-10 plays) and Storytellers looking to practice their craft. (Advanced players are welcome to mentor and play as well.)

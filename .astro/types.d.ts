@@ -67,9 +67,16 @@ declare module 'astro:content' {
 
 	const entryMap: {
 		"events": {
-"next-game.md": {
-  id: "next-game.md",
-  slug: "next-game",
+"2023-02-05-194648-beginners-clocktower-online.md": {
+  id: "2023-02-05-194648-beginners-clocktower-online.md",
+  slug: "2023-02-05-194648-beginners-clocktower-online",
+  body: string,
+  collection: "events",
+  data: any
+},
+"2023-02-05-194931-advanced-clocktower-online.md": {
+  id: "2023-02-05-194931-advanced-clocktower-online.md",
+  slug: "2023-02-05-194931-advanced-clocktower-online",
   body: string,
   collection: "events",
   data: any

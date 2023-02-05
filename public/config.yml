@@ -23,14 +23,24 @@ collections:
     label: 'Event'
     folder: 'src/content/events'
     format: 'frontmatter'
-    create: false
+    create: true
     slug: '{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}{{second}}-{{slug}}'
     editor:
       preview: false
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Date', name: 'date', widget: 'datetime' }
-      - { label: 'Location', name: 'location', widget: 'select', options: ['online', 'sellwood', 'gabriel', 'cloudcap'] }
+      - label: 'Day of Week'
+        name: 'date'
+        widget: 'select'
+        options:
+           - { label: "Sunday", value: 0 }
+           - { label: "Monday", value: 1 }
+           - { label: "Tuesday", value: 2 }
+           - { label: "Wednesday", value: 3 }
+           - { label: "Thursday", value: 4 }
+           - { label: "Friday", value: 5 }
+           - { label: "Saturday", value: 6 }
+      - { label: 'Duration', name: 'duration', widget: 'number'}
       - { label: 'Image', name: 'image', widget: 'image' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
   - name: 'randomText'

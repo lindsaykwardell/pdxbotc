@@ -26,11 +26,11 @@ const myHandler = async (event, context) => {
     .post(
       `https://discord.com/api/v10/guilds/${process.env.PUBLIC_SERVER_ID}/scheduled-events`,
       {
-        name: "Base Three Clocktower Online",
+        name: "Beginners(+) Clocktower Online",
         privacy_level: "2",
         scheduled_start_time: monEventStart.toISOString(),
         scheduled_end_time: monEventEnd.toISOString(),
-        description: `Monday night we welcome newer players and storytellers looking to practice their ST chops. 
+        description: `On Mondays we welcome players new to Clocktower (0-10 plays) and Storytellers looking to practice their craft. (Advanced players are welcome to mentor and play as well.)
 
 We will be playing with the official application with the following Session ID: pdxbotc 
 
@@ -62,7 +62,7 @@ If this is your first time playing with the official app please do the following
         privacy_level: "2",
         scheduled_start_time: wedEventStart.toISOString(),
         scheduled_end_time: wedEventEnd.toISOString(),
-        description: `Wednesday night we challenge experienced players with funky custom scripts and experimental roles. 
+        description: `On Wednesdays we challenge experienced players (more than 10 plays) with custom scripts and experimental roles. (Newer players are welcome to log on as spectators and listen to the wild plays in real time.)
 
 We will be playing with the official application with the following Session ID: pdxbotc 
 

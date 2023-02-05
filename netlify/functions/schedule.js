@@ -45,6 +45,7 @@ If this is your first time playing with the official app please do the following
         entity_metadata: {
           location: "https://online.bloodontheclocktower.com/#pdxbotc",
         },
+        image: await toDataURL("https://www.pdxbotc.com/img/monday.jpg"),
       },
       {
         headers: {
@@ -77,6 +78,7 @@ If this is your first time playing with the official app please do the following
         entity_metadata: {
           location: "https://online.bloodontheclocktower.com/#pdxbotc",
         },
+        image: await toDataURL("https://www.pdxbotc.com/img/wednesday.jpg"),
       },
       {
         headers: {
@@ -93,5 +95,15 @@ If this is your first time playing with the official app please do the following
     ],
   };
 };
+
+const toDataURL = (url) =>
+  axios
+    .get(url, {
+      responseType: "arraybuffer",
+    })
+    .then((blob) => {
+      const base64 = Buffer.from(blob.data, "binary").toString("base64");
+      return `data:${blob.headers["content-type"]};base64,${base64}`;
+    });
 
 exports.handler = schedule("0 8 * * 4", myHandler);

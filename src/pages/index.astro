@@ -1,52 +1,48 @@
 ---
-import { db } from '../api/firebase'
+import { db } from "../api/firebase";
 import {
   doc,
   setDoc,
   getDocs,
   collection,
-	deleteDoc,
+  deleteDoc,
 } from "firebase/firestore";
-import axios from 'axios'
+import axios from "axios";
 
 import DefaultLayout from "../layouts/DefaultLayout.astro";
-import Event from '../components/Event.vue'
-import ContactUs from "../components/ContactUs.vue";
+import Event from "../components/Event.vue";
 
-import * as Welcome from '../content/text/welcome.md'
-import * as CovidGuidelines from '../content/text/covid-guidelines.md'
-import * as NextGame from '../content/events/next-game.md'
+import * as Welcome from "../content/text/welcome.md";
 
-const welcomeText = (await Welcome.compiledContent())
-const covidGuidelines = await CovidGuidelines.compiledContent()
+const welcomeText = await Welcome.compiledContent();
 
 const events = await fetchEvents();
 
 if (events.length) {
-	const eventDocs = await getDocs(collection(db, "events"));
+  const eventDocs = await getDocs(collection(db, "events"));
 
-	const eventList = [];
+  const eventList = [];
 
-	eventDocs.forEach((doc) => {
-		eventList.push(doc.data());
-	});
+  eventDocs.forEach((doc) => {
+    eventList.push(doc.data());
+  });
 
-	for (const event of eventList) {
-		await deleteDoc(doc(db, "events", event.id));
-	}
+  for (const event of eventList) {
+    await deleteDoc(doc(db, "events", event.id));
+  }
 }
 
 for (const event of events) {
-	await setDoc(doc(db, "events", event.id), {
-		id: event.id,
-		title: event.name,
-		date: event.scheduled_start_time,
-		location: event.entity_metadata?.location,
-		description: event.description,
-		image:
-			event.image &&
-			`https://cdn.discordapp.com/guild-events/${event.id}/${event.image}.webp?size=1024`,
-	});
+  await setDoc(doc(db, "events", event.id), {
+    id: event.id,
+    title: event.name,
+    date: event.scheduled_start_time,
+    location: event.entity_metadata?.location,
+    description: event.description,
+    image:
+      event.image &&
+      `https://cdn.discordapp.com/guild-events/${event.id}/${event.image}.webp?size=1024`,
+  });
 }
 
 const eventDocs = await getDocs(collection(db, "events"));
@@ -54,7 +50,7 @@ const eventDocs = await getDocs(collection(db, "events"));
 const eventList = [];
 
 eventDocs.forEach((doc) => {
-	eventList.push(doc.data());
+  eventList.push(doc.data());
 });
 
 eventList.sort((a, b) => (a.date < b.date ? -1 : 1));
@@ -63,7 +59,9 @@ async function fetchEvents() {
   try {
     return (
       await axios.get(
-        `https://discord.com/api/v10/guilds/${import.meta.env.PUBLIC_SERVER_ID}/scheduled-events`,
+        `https://discord.com/api/v10/guilds/${
+          import.meta.env.PUBLIC_SERVER_ID
+        }/scheduled-events`,
         {
           headers: {
             Authorization: `Bot ${import.meta.env.SECRET_BOT_TOKEN}`,
@@ -78,47 +76,46 @@ async function fetchEvents() {
 ---
 
 <DefaultLayout>
-	<main class="py-5">
-		<div class="flex flex-col lg:flex-row items-center py-5 text-gray-300 container m-auto">
-			<aside class="demon-head-wrapper w-2/5">
-				<img src="/img/demon-head.png" class="demon-head" alt="Demon Head" />
-			</aside>
-			<section class="w-11/12 lg:w-3/5 p-5 bg-gray-800 shadow m-5">
-				<h1 class="text-2xl font-piratesbay text-center p-2">
-					Welcome to the Portland, OR, Blood on the Clocktower group!
-				</h1>
-				<div class="prose max-w-none m-auto p-4" set:html={welcomeText} />
-			</section>
-		</div>
-		<div class="flex flex-col items-center">
-			<div class="py-4 flex flex-col items-center ">
-				<h2 class="text-2xl md:text-3xl text-white font-piratesbay">
-					Upcoming Events:
-				</h2>
-			</div>
-			<div class="flex flex-col md:w-[500px] lg:w-[750px] text-white text-lg gap-6">
-				{eventList.map(event => 
-					<Event event={event} client:idle />
-				)}
-			</div>
-		</div>
-		<ContactUs />
-		<div class="m-auto w-11/12 md:w-[550px] bg-gray-800 text-white text-lg mt-12 p-5">
-			<h2 class="text-2xl md:text-3xl text-white font-piratesbay text-center mb-4">
-				COVID-19 Guidelines:
-			</h2>
-			<div class="prose m-auto" set:html={covidGuidelines} />
-		</div>
-		<div class="flex-col justify-center items-center pt-8 hidden sm:flex">
-			<h2 class="text-2xl font-piratesbay text-center text-white">
-				What is Blood on the Clocktower?
-			</h2>
-			<p class="py-4 text-white">
-				Watch this video to learn more about Blood on the Clocktower:
-			</p>
-			<iframe width="560" height="315" src="https://www.youtube.com/embed/nuOq54FHDsg" frameborder="0"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen />
-		</div>
-	</main>
+  <main class="py-5">
+    <div
+      class="flex flex-col lg:flex-row items-center py-5 text-gray-300 container m-auto"
+    >
+      <aside class="demon-head-wrapper w-2/5">
+        <img src="/img/demon-head.png" class="demon-head" alt="Demon Head" />
+      </aside>
+      <section class="w-11/12 lg:w-3/5 xl:w-full p-5 bg-gray-800 shadow m-5">
+        <h1 class="text-2xl font-piratesbay text-center p-2">
+          Welcome to the Portland, OR, Blood on the Clocktower group!
+        </h1>
+        <div class="prose max-w-none m-auto p-4" set:html={welcomeText} />
+      </section>
+    </div>
+    <div class="flex flex-col items-center">
+      <div class="py-4 flex flex-col items-center">
+        <h2 class="text-2xl md:text-3xl text-white font-piratesbay">
+          Upcoming Events:
+        </h2>
+      </div>
+      <div
+        class="flex flex-col md:w-[500px] lg:w-[750px] text-white text-lg gap-6"
+      >
+        {eventList.map((event) => <Event event={event} client:idle />)}
+      </div>
+    </div>
+    <div class="flex-col justify-center items-center pt-8 hidden sm:flex">
+      <h2 class="text-2xl font-piratesbay text-center text-white">
+        What is Blood on the Clocktower?
+      </h2>
+      <p class="py-4 text-white">
+        Watch this video to learn more about Blood on the Clocktower:
+      </p>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/nuOq54FHDsg"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+  </main>
 </DefaultLayout>

@@ -1,14 +1,13 @@
 <template>
-  <div v-if="event" class="w-full bg-gray-800 my-4">
-    <div class="border-b border-gray-500 mb-4 p-4">
+  <div v-if="event" class="w-full bg-gray-800 p-4">
+    <div class="border-b border-gray-500 mb-4 py-2">
       <h3 class="text-2xl md:text-3xl text-white font-piratesbay flex-grow">
         {{ event.title }}
       </h3>
-      <div class="flex flex-col sm:flex-row">
+      <div class="flex align-bottom sm:flex-row">
         <div class="flex-grow flex flex-col gap-3">
-          <h4>When: {{ formatEventDate(event.date) }}</h4>
+          <h4>{{ formatEventDate(event.date) }}</h4>
           <h4>
-            Where:
             <a
               v-if="!event.location || event.location.includes('http')"
               href="https://discord.gg/HMVv8rgFTY"
@@ -38,38 +37,10 @@
               <span class="pl-2">Discord</span>
             </a>
             <a
-              v-else-if="event.location.toLowerCase().includes('cloudcap')"
-              href="https://cloudcapgames.com/"
-              class="px-4 py-2 bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                aria-hidden="true"
-                role="img"
-                class="iconify iconify--carbon"
-                width="32"
-                height="32"
-                preserveAspectRatio="xMidYMid meet"
-                viewBox="0 0 32 32"
-              >
-                <path
-                  fill="currentColor"
-                  d="m16 24l-6.09-8.6A8.14 8.14 0 0 1 16 2a8.08 8.08 0 0 1 8 8.13a8.2 8.2 0 0 1-1.8 5.13Zm0-20a6.07 6.07 0 0 0-6 6.13a6.19 6.19 0 0 0 1.49 4L16 20.52L20.63 14A6.24 6.24 0 0 0 22 10.13A6.07 6.07 0 0 0 16 4Z"
-                ></path>
-                <circle cx="16" cy="9" r="2" fill="currentColor"></circle>
-                <path
-                  fill="currentColor"
-                  d="M28 12h-2v2h2v14H4V14h2v-2H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V14a2 2 0 0 0-2-2Z"
-                ></path>
-              </svg>
-              <span class="pl-2">Cloud Cap Games</span>
-            </a>
-            <a
               v-else
               :href="`https://maps.google.com/?q=${event.location}`"
               target="_blank"
-              class="px-4 py-2 bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
+              class="px-4 py-2 bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow whitespace-nowrap"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -96,27 +67,18 @@
             </a>
           </h4>
         </div>
-        <div>
-          <!-- <a
-            class="block my-1 sm:m-2 px-7 py-3 text-2xl bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
-            href="`https://discord.gg/XbQw9Wu7Uv?event=${event.id}`"
-            target="_blank"
-          >
-            RSVP
-          </a> -->
-          <button
-            class="block my-1 sm:m-2 px-7 py-3 text-2xl bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
-            @click="showRsvpForm = !showRsvpForm"
-          >
-            {{ showRsvpForm ? "Event Details" : "RSVP" }}
-          </button>
-        </div>
+        <button
+          class="block sm:m-2 px-3 text-2xl bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
+          @click="showRsvpForm = !showRsvpForm"
+        >
+          {{ showRsvpForm ? "Event Details" : "RSVP" }}
+        </button>
       </div>
     </div>
     <img v-if="event.image" :src="event.image" />
     <div
       v-if="!showRsvpForm"
-      class="p-6 prose max-w-none m-auto whitespace-pre-wrap"
+      class="py-2 prose max-w-none m-auto whitespace-pre-wrap"
     >
       {{ event.description }}
     </div>

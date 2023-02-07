@@ -2,7 +2,7 @@
   <div v-if="event" class="w-full bg-gray-800 p-4">
     <div class="border-b border-gray-500 mb-4 py-2">
       <h3 class="text-2xl md:text-3xl text-white font-piratesbay flex-grow">
-        {{ event.title }}
+        {{ event.title.replace("[PUBLIC]", "") }}
       </h3>
       <div class="flex align-bottom sm:flex-row">
         <div class="flex-grow flex flex-col gap-3">

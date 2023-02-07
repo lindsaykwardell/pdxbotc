@@ -14,9 +14,24 @@ import Event from "../components/Event.vue";
 
 import * as Welcome from "../content/text/welcome.md";
 
+type ClocktowerEvent = {
+  id: string;
+  name: string;
+  scheduled_start_time: string;
+  entity_metadata: {
+    location: string;
+  };
+  description: string;
+  image: string;
+};
+
 const welcomeText = await Welcome.compiledContent();
 
-const events = await fetchEvents();
+const events: ClocktowerEvent[] = (await fetchEvents()).filter(
+  (event: ClocktowerEvent) =>
+    event.name.includes("[PUBLIC]") ||
+    event.entity_metadata?.location.includes("http")
+);
 
 if (events.length) {
   const eventDocs = await getDocs(collection(db, "events"));

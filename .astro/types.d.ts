@@ -90,13 +90,6 @@ declare module 'astro:content' {
   collection: "text",
   data: any
 },
-"upcoming-events-subtitle.md": {
-  id: "upcoming-events-subtitle.md",
-  slug: "upcoming-events-subtitle",
-  body: string,
-  collection: "text",
-  data: any
-},
 "welcome.md": {
   id: "welcome.md",
   slug: "welcome",

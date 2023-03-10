@@ -90,6 +90,13 @@ declare module 'astro:content' {
   collection: "text",
   data: any
 },
+"register-link.md": {
+  id: "register-link.md",
+  slug: "register-link",
+  body: string,
+  collection: "text",
+  data: any
+},
 "welcome.md": {
   id: "welcome.md",
   slug: "welcome",

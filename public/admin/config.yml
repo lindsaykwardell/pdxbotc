@@ -48,7 +48,7 @@ collections:
     folder: 'src/content/text'
     format: 'frontmatter'
     create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}{{second}}-{{slug}}'
+    slug: '{{slug}}'
     editor:
       preview: false
     fields:

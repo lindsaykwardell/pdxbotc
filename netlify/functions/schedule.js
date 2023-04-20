@@ -63,4 +63,4 @@ const toDataURL = (url) =>
       return `data:${blob.headers["content-type"]};base64,${base64}`;
     });
 
-exports.handler = schedule("0 8 * * 4", myHandler);
+// exports.handler = schedule("0 8 * * 4", myHandler);

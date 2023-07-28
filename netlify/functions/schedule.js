@@ -1,6 +1,6 @@
 // Rewrite the imports using cjs
 
-// const { schedule } = require("@netlify/functions");
+const { schedule } = require("@netlify/functions");
 const axios = require("axios");
 const dayjs = require("dayjs");
 const utc = require("dayjs/plugin/utc");
@@ -63,5 +63,4 @@ const toDataURL = (url) =>
       return `data:${blob.headers["content-type"]};base64,${base64}`;
     });
 
-// exports.handler = schedule("0 8 * * 4", myHandler);
-exports.handler = myHandler;
+exports.handler = schedule("0 8 * * 4", myHandler);

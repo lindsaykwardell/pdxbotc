@@ -1,17 +1,13 @@
 ---
-title: Advanced Clocktower Online
+title: Wednesday Night Clocktower
 date: 3
 duration: 4
-image: /img/wednesday.jpg
+image: /img/wednesday-clocktower.jpg
 ---
-On Wednesdays we challenge experienced players (more than 10 plays) with custom scripts and experimental roles. (Newer players are welcome to log on as spectators and listen to the wild plays in real time.)
+On Wednesdays, we welcome players of all experience levels to play Blood on the Clocktower. Depending on who is there, we may run the official base three scripts or playtested custom scripts. Keep an eye on the #online-events channel for script polls and logistics updates.
 
-We will be playing with the official application with the following Session ID: pdxbotc
+We will be playing in the official application at the following link:
 
-If this is your first time playing with the official app please do the following:
+<https://online.bloodontheclocktower.com/join/pdxbotc>
 
-1 - Visit http://online.bloodontheclocktower.com/login and signup for an account.
-
-2 - Once you are logged in click "Setup Mic/Cam" to give permissions to the application to use those devices.
-
-3 - Press the letter "j" and join our Session ID: pdxbotc
+For instructions on how to use the official app, check the pinned post in #online-events.

@@ -1,16 +1,16 @@
 ---
-import { db } from "../api/firebase";
-import {
-  doc,
-  setDoc,
-  getDocs,
-  collection,
-  deleteDoc,
-} from "firebase/firestore";
-import axios from "axios";
+// import { db } from "../api/firebase";
+// import {
+//   doc,
+//   setDoc,
+//   getDocs,
+//   collection,
+//   deleteDoc,
+// } from "firebase/firestore";
+// import axios from "axios";
 
 import DefaultLayout from "../layouts/DefaultLayout.astro";
-import Event from "../components/Event.vue";
+// import Event from "../components/Event.vue";
 import { getEntryBySlug } from "astro:content";
 
 type ClocktowerEvent = {
@@ -28,67 +28,67 @@ const { Content: WelcomeText } = await (
   await getEntryBySlug("text", "welcome")
 ).render();
 
-const events: ClocktowerEvent[] = (await fetchEvents()).filter(
-  (event: ClocktowerEvent) =>
-    event.name.includes("[PUBLIC]") ||
-    event.entity_metadata?.location.includes("http")
-);
+// const events: ClocktowerEvent[] = (await fetchEvents()).filter(
+//   (event: ClocktowerEvent) =>
+//     event.name.includes("[PUBLIC]") ||
+//     event.entity_metadata?.location.includes("http")
+// );
 
-if (events.length) {
-  const eventDocs = await getDocs(collection(db, "events"));
+// if (events.length) {
+//   const eventDocs = await getDocs(collection(db, "events"));
 
-  const eventList = [];
+//   const eventList = [];
 
-  eventDocs.forEach((doc) => {
-    eventList.push(doc.data());
-  });
+//   eventDocs.forEach((doc) => {
+//     eventList.push(doc.data());
+//   });
 
-  for (const event of eventList) {
-    await deleteDoc(doc(db, "events", event.id));
-  }
-}
+//   for (const event of eventList) {
+//     await deleteDoc(doc(db, "events", event.id));
+//   }
+// }
 
-for (const event of events) {
-  await setDoc(doc(db, "events", event.id), {
-    id: event.id,
-    title: event.name,
-    date: event.scheduled_start_time,
-    location: event.entity_metadata?.location,
-    description: event.description,
-    image:
-      event.image &&
-      `https://cdn.discordapp.com/guild-events/${event.id}/${event.image}.webp?size=1024`,
-  });
-}
+// for (const event of events) {
+//   await setDoc(doc(db, "events", event.id), {
+//     id: event.id,
+//     title: event.name,
+//     date: event.scheduled_start_time,
+//     location: event.entity_metadata?.location,
+//     description: event.description,
+//     image:
+//       event.image &&
+//       `https://cdn.discordapp.com/guild-events/${event.id}/${event.image}.webp?size=1024`,
+//   });
+// }
 
-const eventDocs = await getDocs(collection(db, "events"));
+// const eventDocs = await getDocs(collection(db, "events"));
 
-const eventList = [];
+// const eventList = [];
 
-eventDocs.forEach((doc) => {
-  eventList.push(doc.data());
-});
+// eventDocs.forEach((doc) => {
+//   eventList.push(doc.data());
+// });
 
-eventList.sort((a, b) => (a.date < b.date ? -1 : 1));
+// eventList.sort((a, b) => (a.date < b.date ? -1 : 1));
 
-async function fetchEvents() {
-  try {
-    return (
-      await axios.get(
-        `https://discord.com/api/v10/guilds/${
-          import.meta.env.PUBLIC_SERVER_ID
-        }/scheduled-events`,
-        {
-          headers: {
-            Authorization: `Bot ${import.meta.env.SECRET_BOT_TOKEN}`,
-          },
-        }
-      )
-    ).data;
-  } catch (_) {
-    return [];
-  }
-}
+// async function fetchEvents() {
+//   try {
+//     return (
+//       await axios.get(
+//         `https://discord.com/api/v10/guilds/${
+//           import.meta.env.PUBLIC_SERVER_ID
+//         }/scheduled-events`,
+//         {
+//           headers: {
+//             Authorization: `Bot ${import.meta.env.SECRET_BOT_TOKEN}`,
+//           },
+//         }
+//       )
+//     ).data;
+//   } catch (_) {
+//     return [];
+//   }
+// }
 ---
 
 <DefaultLayout>
@@ -108,7 +108,7 @@ async function fetchEvents() {
         </div>
       </section>
     </div>
-    <div class="flex flex-col items-center">
+    <!-- <div class="flex flex-col items-center">
       <div class="py-4 flex flex-col items-center">
         <h2 class="text-2xl md:text-3xl text-white font-piratesbay">
           Upcoming Events:
@@ -119,7 +119,7 @@ async function fetchEvents() {
       >
         {eventList.map((event) => <Event event={event} client:idle />)}
       </div>
-    </div>
+    </div> -->
     <div class="flex-col justify-center items-center pt-8 hidden sm:flex">
       <h2 class="text-2xl font-piratesbay text-center text-white">
         What is Blood on the Clocktower?

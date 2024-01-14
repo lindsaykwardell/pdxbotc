@@ -1,0 +1,7 @@
+---
+import { getEntryBySlug } from "astro:content";
+
+const { body } = await getEntryBySlug("text", "register-rcg")
+
+return Astro.redirect(body);
+---

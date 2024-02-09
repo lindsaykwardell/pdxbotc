@@ -1,4 +1,4 @@
-# [[redirects]]
-#   from = "/discord"
-#   to = "https://discord.com/invite/HMVv8rgFTY"
-#   status = 302
+[[redirects]]
+  from = "/discord"
+  to = "https://discord.gg/wU6FzWq23c"
+  status = 302

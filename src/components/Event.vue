@@ -10,7 +10,7 @@
           <h4>
             <a
               v-if="!event.location || event.location.includes('http')"
-              href="https://discord.gg/HMVv8rgFTY"
+              href="/discord"
               target="_blank"
               class="px-4 py-2 bg-gray-900 hover:bg-red-700 transition duration-50 rounded shadow"
             >
